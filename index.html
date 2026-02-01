@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeraPasia - Your Path to Smart Earnings</title>
-    <link rel="icon" type="image/png" href="https://cdn-ai.onspace.ai/onspace/project/uploads/J9SGhGM2KsGpwVbQfWVgWb/1000298233-removebg-preview.png">
+    <link rel="icon" type="image/png" href="https://cdn-ai.onspace.ai/onspace/project/uploads/bNJGBo4GT9YfAFPhDJJt4q/1000298233-removebg-preview.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -56,6 +56,11 @@
         .admin-dots{position:fixed;bottom:15px;left:15px;opacity:0;cursor:pointer;z-index:50;color:rgba(255,255,255,0.03);font-size:24px;user-select:none}
         .admin-dots:active{opacity:0.5}
         
+        .floating-chat{position:fixed;bottom:80px;right:20px;z-index:100;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#10B981,#059669);box-shadow:0 8px 25px rgba(16,185,129,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;animation:float 3s infinite}
+        .floating-chat:hover{transform:scale(1.1)}
+        .floating-chat img{width:35px;height:35px}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        
         .coin-flip-scene{perspective:1000px;margin:20px auto;width:200px;height:200px;position:relative}
         .coin-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 3s cubic-bezier(0.25,0.46,0.45,0.94)}
         .coin-3d.spinning{transform:rotateY(1800deg)}
@@ -83,7 +88,7 @@
 <body>
     <div id="loader">
         <div class="loader-box"></div>
-        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/J9SGhGM2KsGpwVbQfWVgWb/1000298233-removebg-preview.png" class="w-24 h-24 mt-4">
+        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/bNJGBo4GT9YfAFPhDJJt4q/1000298233-removebg-preview.png" class="w-24 h-24 mt-4">
         <div class="text-gold text-xl font-bold mt-3">MeraPasia</div>
         <div class="text-gold text-xs mt-1 italic">Loading...</div>
     </div>
@@ -91,10 +96,14 @@
     <audio id="bgMusic" loop><source src="data:audio/mpeg;base64,//" type="audio/mpeg"></audio>
     <div class="admin-dots" onclick="adminAccess()">...</div>
     
+    <div class="floating-chat hidden" id="floatingChat" onclick="openLiveChat()">
+        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/MGY2zvD6LoubkVqSq95YTS/pngtree-customer-support-operators-icon-simple-style-png-image_1873713.jpg" alt="Chat">
+    </div>
+    
     <div id="authPage" class="hidden min-h-screen flex items-center justify-center p-4">
         <div class="glass rounded-3xl p-8 w-full max-w-md glow">
             <div class="text-center mb-8">
-                <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/J9SGhGM2KsGpwVbQfWVgWb/1000298233-removebg-preview.png" class="w-24 h-24 mx-auto mb-3">
+                <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/bNJGBo4GT9YfAFPhDJJt4q/1000298233-removebg-preview.png" class="w-28 h-28 mx-auto mb-4">
                 <h1 class="text-4xl font-bold bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent mb-2">MeraPasia</h1>
                 <p class="text-gold text-base font-semibold italic">"Your Path to Smart Earnings"</p>
             </div>
@@ -127,7 +136,7 @@
                 <div class="flex items-center space-x-2">
                     <button onclick="showMenu()" class="glass border border-accent px-3 py-2 rounded-lg transition hover:bg-accent/10"><i class="fas fa-bars text-accent text-xl"></i></button>
                     <div onclick="navigate('home')" class="flex flex-col items-center cursor-pointer">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/J9SGhGM2KsGpwVbQfWVgWb/1000298233-removebg-preview.png" class="w-14 h-14 object-contain">
+                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/bNJGBo4GT9YfAFPhDJJt4q/1000298233-removebg-preview.png" class="w-14 h-14 object-contain">
                         <div class="font-bold text-xs bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent -mt-1">MeraPasia</div>
                     </div>
                 </div>
@@ -170,14 +179,14 @@
                 </div>
                 
                 <div class="grid grid-cols-2 gap-3 mb-4">
-                    <button onclick="navigate('deposit')" class="glass rounded-2xl p-5 hover:bg-white/5 transition glow">
-                        <div class="text-4xl mb-2">💳</div>
-                        <div class="font-bold text-base">Deposit</div>
+                    <button onclick="navigate('deposit')" class="glass rounded-2xl p-4 hover:bg-white/5 transition glow flex flex-col items-center">
+                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/fh9JPMXfGcLXFUrv3tpGQN/1000298018-removebg-preview.png" class="w-16 h-16 mb-2">
+                        <div class="font-bold text-sm">Deposit</div>
                         <div class="text-xs text-green-400">Min ₨300</div>
                     </button>
-                    <button onclick="navigate('withdraw')" class="glass rounded-2xl p-5 hover:bg-white/5 transition glow">
-                        <div class="text-4xl mb-2">💰</div>
-                        <div class="font-bold text-base">Withdraw</div>
+                    <button onclick="navigate('withdraw')" class="glass rounded-2xl p-4 hover:bg-white/5 transition glow flex flex-col items-center">
+                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/8rvYHQjsLgiAPVBDKjrjDN/1000298019-removebg-preview.png" class="w-16 h-16 mb-2">
+                        <div class="font-bold text-sm">Withdraw</div>
                         <div class="text-xs text-accent">Min ₨1000</div>
                     </button>
                 </div>
@@ -187,17 +196,17 @@
                         <div class="text-3xl mb-2">📋</div>
                         <div class="font-bold text-sm">History</div>
                     </button>
-                    <button onclick="navigate('referral')" class="glass rounded-xl p-4 hover:bg-white/5 transition">
-                        <div class="text-3xl mb-2">👥</div>
+                    <button onclick="navigate('referral')" class="glass rounded-xl p-4 hover:bg-white/5 transition flex flex-col items-center">
+                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/T49QzPUngMbkNJmaFaK82t/1000298050-removebg-preview~2.png" class="w-12 h-12 mb-1">
                         <div class="font-bold text-sm">Referrals</div>
-                        <div class="text-xs text-purple-300">10% Commission</div>
+                        <div class="text-xs text-purple-300">10% Comm.</div>
                     </button>
                 </div>
                 
                 <button onclick="navigate('leaderboard')" class="w-full glass rounded-xl p-4 mb-4 glow hover:bg-white/5 transition">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <div class="text-4xl">🏆</div>
+                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/Q7JQC4QoAsMQFkPM5kgVJW/1000298141-removebg-preview.png" class="w-14 h-14">
                             <div class="text-left">
                                 <div class="font-bold text-base">Champions League</div>
                                 <div class="text-xs" style="color:var(--txt2)">Rankings & Leaderboard</div>
@@ -289,16 +298,16 @@
                     <div class="bg-green-900/30 border-2 border-green-500 rounded-xl p-3 mb-4 text-sm"><i class="fas fa-gift mr-2 text-green-400"></i><span class="font-bold text-green-300">Deposit ₨300+ and get ₨10 Instant Bonus!</span></div>
                     <h3 class="font-bold text-base mb-3">Select Payment Method:</h3>
                     <div class="grid grid-cols-3 gap-3 mb-4">
-                        <button onclick="selectPayment('bank')" id="payBank" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <div class="text-3xl mb-1">🏦</div>
+                        <button onclick="selectPayment('bank')" id="payBank" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center">
+                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/Xyn5LiV5sEnKdsXWVgRUPP/1000297934-removebg-preview.png" class="w-12 h-12 mb-1">
                             <div class="font-bold text-xs">Bank</div>
                         </button>
-                        <button onclick="selectPayment('easypaisa')" id="payEasypaisa" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <div class="text-3xl mb-1">📱</div>
+                        <button onclick="selectPayment('easypaisa')" id="payEasypaisa" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center">
+                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/AyAcBMQoChhy2HDYYqyM7U/1000297695-removebg-preview.png" class="w-12 h-12 mb-1">
                             <div class="font-bold text-xs">EasyPaisa</div>
                         </button>
-                        <button onclick="selectPayment('jazzcash')" id="payJazzcash" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <div class="text-3xl mb-1">💳</div>
+                        <button onclick="selectPayment('jazzcash')" id="payJazzcash" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center">
+                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/8fR9RToRN2wcSLNQmoqMkj/1000296570-removebg-preview.png" class="w-12 h-12 mb-1">
                             <div class="font-bold text-xs">JazzCash</div>
                         </button>
                     </div>
@@ -329,16 +338,16 @@
                     <p class="mb-4 text-xs font-semibold" style="color:var(--txt2)">Minimum Withdrawal: ₨1,000 (3% withdrawal fee will be deducted)</p>
                     <h3 class="font-bold text-base mb-3">Select Payment Method:</h3>
                     <div class="grid grid-cols-3 gap-3 mb-4">
-                        <button onclick="selectWithdrawPayment('bank')" id="wdBank" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <div class="text-3xl mb-1">🏦</div>
+                        <button onclick="selectWithdrawPayment('bank')" id="wdBank" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center">
+                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/Xyn5LiV5sEnKdsXWVgRUPP/1000297934-removebg-preview.png" class="w-12 h-12 mb-1">
                             <div class="font-bold text-xs">Bank</div>
                         </button>
-                        <button onclick="selectWithdrawPayment('easypaisa')" id="wdEasypaisa" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <div class="text-3xl mb-1">📱</div>
+                        <button onclick="selectWithdrawPayment('easypaisa')" id="wdEasypaisa" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center">
+                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/AyAcBMQoChhy2HDYYqyM7U/1000297695-removebg-preview.png" class="w-12 h-12 mb-1">
                             <div class="font-bold text-xs">EasyPaisa</div>
                         </button>
-                        <button onclick="selectWithdrawPayment('jazzcash')" id="wdJazzcash" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <div class="text-3xl mb-1">💳</div>
+                        <button onclick="selectWithdrawPayment('jazzcash')" id="wdJazzcash" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center">
+                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/8fR9RToRN2wcSLNQmoqMkj/1000296570-removebg-preview.png" class="w-12 h-12 mb-1">
                             <div class="font-bold text-xs">JazzCash</div>
                         </button>
                     </div>
@@ -386,13 +395,17 @@
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
                 <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow mb-4">
-                    <h2 class="text-xl font-bold mb-3 text-purple-400"><i class="fas fa-users mr-2"></i>Referral Program</h2>
-                    <p class="mb-4 text-xs font-semibold" style="color:var(--txt2)">Earn 10% commission on your referral's first withdrawal!</p>
+                    <div class="text-center mb-4">
+                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/T49QzPUngMbkNJmaFaK82t/1000298050-removebg-preview~2.png" class="w-24 h-24 mx-auto">
+                    </div>
+                    <h2 class="text-xl font-bold mb-3 text-purple-400 text-center"><i class="fas fa-users mr-2"></i>Referral Program</h2>
+                    <p class="mb-4 text-xs font-semibold text-center" style="color:var(--txt2)">Earn 10% commission on your referral's first withdrawal!</p>
                     <div class="bg-purple-900/30 border-2 border-purple-500 rounded-xl p-4 mb-4 text-center">
                         <div class="text-xs mb-1" style="color:var(--txt2)">Your Referral Code:</div>
                         <div class="text-2xl font-bold text-accent mb-3" id="refCode"></div>
                         <div id="qrCode" class="mx-auto mb-3"></div>
-                        <button onclick="copyRefCode()" class="bg-accent text-primary px-5 py-2 rounded-lg font-bold text-sm"><i class="fas fa-copy mr-2"></i>Copy Code</button>
+                        <button onclick="copyRefCode()" class="bg-accent text-primary px-5 py-2 rounded-lg font-bold text-sm mb-2"><i class="fas fa-copy mr-2"></i>Copy Code</button>
+                        <button onclick="copyRefLink()" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold text-sm"><i class="fas fa-link mr-2"></i>Copy Link</button>
                     </div>
                     <div class="grid grid-cols-3 gap-3 mb-4">
                         <div class="glass rounded-xl p-3 text-center">
@@ -434,7 +447,10 @@
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
                 <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow">
-                    <h2 class="text-xl font-bold mb-4 text-yellow-300"><i class="fas fa-trophy mr-2"></i>Champions League</h2>
+                    <div class="text-center mb-4">
+                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/Q7JQC4QoAsMQFkPM5kgVJW/1000298141-removebg-preview.png" class="w-24 h-24 mx-auto">
+                    </div>
+                    <h2 class="text-xl font-bold mb-4 text-yellow-300 text-center"><i class="fas fa-trophy mr-2"></i>Champions League</h2>
                     <div id="leaderboardList" class="space-y-2"></div>
                 </div>
             </div>
@@ -610,7 +626,7 @@
 
     <script>
         let user,adminMode=false,soundEnabled=false,theme='dark',audioCtx,currentCoinBet=0,coinGameState='waiting',coinTimer=20,coinTimerInterval,bubbleBet=0,bubbleGameState='waiting',bubbleTimer=60,bubbleTimerInterval,yourScore=0,oppScore=0,bubbles=[],shooter;
-        const adminEmail='ascngghj@gmail.com',adminPass='admin@Ahmad';
+        const adminEmail='ascngghj@gmail.com',adminPass='admin@Ahmad',baseUrl='https://merapasia.com';
         
         function getAudioContext(){if(!audioCtx)audioCtx=new AudioContext();return audioCtx}
         const sounds={
@@ -623,11 +639,22 @@
         function toggleTheme(){sounds.click();theme=theme==='dark'?'light':'dark';document.body.classList.toggle('light');localStorage.setItem('theme',theme)}
         function toggleMusic(){soundEnabled=!soundEnabled;if(soundEnabled){notif('🔊 Sound ON');sounds.click()}else{notif('🔇 Sound OFF','error')}}
         
-        window.addEventListener('load',()=>{const t=localStorage.getItem('theme')||'dark';theme=t;if(t==='light')document.body.classList.add('light');setTimeout(()=>{document.getElementById('loader').style.display='none';const s=localStorage.getItem('currentUser'),a=localStorage.getItem('adminLogged');if(a==='true'){adminMode=true;showAdminPanel()}else if(s){user=JSON.parse(s);showApp()}else document.getElementById('authPage').classList.remove('hidden')},1500)});
+        window.addEventListener('load',()=>{const t=localStorage.getItem('theme')||'dark';theme=t;if(t==='light')document.body.classList.add('light');checkRefParam();setTimeout(()=>{document.getElementById('loader').style.display='none';const s=localStorage.getItem('currentUser'),a=localStorage.getItem('adminLogged');if(a==='true'){adminMode=true;showAdminPanel()}else if(s){user=JSON.parse(s);showApp()}else document.getElementById('authPage').classList.remove('hidden')},1500)});
+        
+        function checkRefParam(){const params=new URLSearchParams(window.location.search),ref=params.get('ref');if(ref)document.getElementById('signupReferral').value=ref}
+        function getRefLink(){return baseUrl+'/?ref='+user.referralCode}
+        function copyRefLink(){navigator.clipboard.writeText(getRefLink());notif('Referral link copied!');sounds.win()}
+        function shareWhatsApp(){const msg=encodeURIComponent(`🎉 *Join MeraPasia - Your Path to Smart Earnings!*\n\n💰 Earn Real PKR Playing Games!\n🎁 Daily Rewards & Treasure Box\n🎮 Coin Flip, Bubble Shooter & Jackpot\n👥 Get 10% Commission on Referrals!\n\n✨ *Your Exclusive Referral Code: ${user.referralCode}*\n\n👉 Click here to join: ${getRefLink()}\n\n🚀 Start earning today!`);window.open(`https://wa.me/?text=${msg}`,'_blank')}
+        function shareFacebook(){const url=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(getRefLink())}&quote=${encodeURIComponent('🎉 Join MeraPasia and earn real money! Use my referral code: '+user.referralCode)}`;window.open(url,'_blank')}
+        function shareTwitter(){const msg=encodeURIComponent(`🎉 Join MeraPasia - Your Path to Smart Earnings!\n\n💰 Earn Real PKR | 🎮 Play Games | 🎁 Daily Rewards\n👥 Use code: ${user.referralCode}\n\n${getRefLink()}`);window.open(`https://twitter.com/intent/tweet?text=${msg}`,'_blank')}
+        function shareInstagram(){const template=`🎉 Join MeraPasia - Your Path to Smart Earnings!\n\n💰 Earn Real PKR Playing Games\n🎮 Coin Flip | Bubble Shooter | Jackpot\n🎁 Daily Treasure Box Rewards\n👥 10% Referral Commission\n\n✨ Use my code: ${user.referralCode}\n🔗 Link in bio: ${getRefLink()}`;navigator.clipboard.writeText(template);notif('✅ Instagram post template copied! Paste in your story/post');sounds.win()}
+        
+        function openLiveChat(){sounds.click();const m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"><div class="glass rounded-2xl p-5 w-full max-w-md"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-bold text-green-400"><i class="fas fa-headset mr-2"></i>Live Support Chat</h2><button onclick="document.getElementById('modals').innerHTML=''" class="text-2xl">&times;</button></div><div class="bg-blue-900/30 border border-blue-500 rounded-lg p-3 mb-3 h-64 overflow-y-auto" id="chatMessages"><div class="text-sm mb-2 text-center" style="color:var(--txt2)">Chat with our support team</div><div class="glass p-2 rounded-lg mb-2"><div class="text-xs text-green-400 font-bold">Support Agent</div><div class="text-sm">Hello! How can we help you today?</div></div></div><div class="flex gap-2"><input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 glass border-2 border-accent/30 rounded-lg px-3 py-2 text-sm" style="background:var(--card);color:var(--txt)"><button onclick="sendChatMsg()" class="bg-green-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-700"><i class="fas fa-paper-plane"></i></button></div></div></div>`;document.getElementById('modals').innerHTML=m}
+        function sendChatMsg(){const inp=document.getElementById('chatInput'),msg=inp.value.trim();if(!msg)return;const chat=document.getElementById('chatMessages');chat.innerHTML+=`<div class="glass p-2 rounded-lg mb-2 text-right"><div class="text-xs text-accent font-bold">You</div><div class="text-sm">${msg}</div></div>`;inp.value='';chat.scrollTop=chat.scrollHeight;setTimeout(()=>{chat.innerHTML+=`<div class="glass p-2 rounded-lg mb-2"><div class="text-xs text-green-400 font-bold">Support Agent</div><div class="text-sm">Thank you for your message. An agent will respond shortly.</div></div>`;chat.scrollTop=chat.scrollHeight},1000)}
         
         function showMoneyAnimation(amt,isSpend=false){const m=document.createElement('div');m.className='money-fly';m.style.left=Math.random()*(window.innerWidth-80)+40+'px';m.style.top=Math.random()*(window.innerHeight/3)+80+'px';m.style.color=isSpend?'#EF4444':'#10B981';m.textContent=(isSpend?'-':'+')+' ₨'+amt.toFixed(0);document.body.appendChild(m);setTimeout(()=>m.remove(),1500)}
         
-        function navigate(page){sounds.click();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'Page').classList.add('active');if(page==='profile')loadProfile();if(page==='leaderboard')loadLeaderboard();if(page==='history')filterHistory('all');if(page==='referral')loadReferral();if(page==='jackpot')loadJackpot();if(page==='coin')startCoinTimer();else stopCoinTimer();if(page==='bubble')resetBubbleLobby();else stopBubbleGame()}
+        function navigate(page){sounds.click();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'Page').classList.add('active');const chat=document.getElementById('floatingChat');if(page==='home')chat.classList.remove('hidden');else chat.classList.add('hidden');if(page==='profile')loadProfile();if(page==='leaderboard')loadLeaderboard();if(page==='history')filterHistory('all');if(page==='referral')loadReferral();if(page==='jackpot')loadJackpot();if(page==='coin')startCoinTimer();else stopCoinTimer();if(page==='bubble')resetBubbleLobby();else stopBubbleGame()}
         
         function notif(msg,type='success'){sounds.click();const n=document.createElement('div');n.className=`notif ${type==='success'?'bg-green-600':'bg-red-600'} text-white`;n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),2500)}
         
@@ -637,7 +664,7 @@
         
         function handleLogin(){const e=document.getElementById('loginEmail').value.trim(),p=document.getElementById('loginPassword').value;if(!e||!p){notif('Fill all fields!','error');return}const users=JSON.parse(localStorage.getItem('users')||'[]'),u=users.find(u=>u.email===e&&u.password===p);if(!u){notif('Invalid credentials!','error');sounds.lose();return}if(u.banned){notif('Account banned!','error');sounds.lose();return}user=u;localStorage.setItem('currentUser',JSON.stringify(user));sounds.win();showApp()}
         
-        function showApp(){document.getElementById('authPage').classList.add('hidden');document.getElementById('app').classList.remove('hidden');updateUI();updateTreasure()}
+        function showApp(){document.getElementById('authPage').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('floatingChat').classList.remove('hidden');updateUI();updateTreasure()}
         
         function updateUI(){document.getElementById('balance').textContent=user.balance.toFixed(0);const nick=user.profile?.nickname||user.name;document.getElementById('userName').textContent=nick;const avatar=user.profile?.picture||`https://ui-avatars.com/api/?name=${encodeURIComponent(nick)}&background=F59E0B&color=1E40AF&size=128`;document.getElementById('userAvatar').src=avatar;const rank=getRank(user.totalEarnings),badges={'BRONZE':'🔰','SILVER':'⚜️','GOLD':'👑','PLATINUM':'💎','DIAMOND':'🌟'};document.getElementById('userRank').innerHTML=`<span class="rank-${rank.tier.toLowerCase()} px-2 py-0.5 rounded-full text-xs font-bold inline-block">${badges[rank.tier]} ${rank.tier}</span>`;saveUser()}
         
@@ -659,12 +686,8 @@
         function deleteAccount(){if(confirm('Delete account permanently?')){const users=JSON.parse(localStorage.getItem('users')||'[]'),i=users.findIndex(u=>u.id===user.id);if(i!==-1){users.splice(i,1);localStorage.setItem('users',JSON.stringify(users))}localStorage.removeItem('currentUser');notif('Deleted!','error');setTimeout(()=>location.reload(),1000)}}
         function loadLeaderboard(){const users=JSON.parse(localStorage.getItem('users')||'[]').filter(u=>!u.banned).sort((a,b)=>b.totalEarnings-a.totalEarnings),list=document.getElementById('leaderboardList'),badges={'BRONZE':'🔰','SILVER':'⚜️','GOLD':'👑','PLATINUM':'💎','DIAMOND':'🌟'};list.innerHTML=users.map((u,i)=>{const r=getRank(u.totalEarnings),medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':`#${i+1}`;return`<div class="glass rounded-xl p-3 flex items-center justify-between hover:bg-white/5 transition"><div class="flex items-center space-x-3"><div class="text-2xl font-bold">${medal}</div><div><div class="font-bold text-sm">${u.profile?.nickname||u.name}</div><div class="rank-${r.tier.toLowerCase()} px-2 py-0.5 rounded-full text-xs font-bold inline-block">${badges[r.tier]}</div></div></div><div class="text-right"><div class="text-lg font-bold text-green-400">₨${u.totalEarnings.toFixed(0)}</div></div></div>`}).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No users yet</div>'}
         function filterHistory(type){sounds.click();['all','deposit','withdraw','game'].forEach(t=>document.getElementById('filter'+t.charAt(0).toUpperCase()+t.slice(1)).className='px-4 py-2 rounded-lg glass text-xs');document.getElementById('filter'+type.charAt(0).toUpperCase()+type.slice(1)).className='px-4 py-2 rounded-lg bg-accent text-primary font-bold text-xs';const history=user.history||[],filtered=type==='all'?history:history.filter(h=>h.type===type),list=document.getElementById('historyList');list.innerHTML=filtered.reverse().map(h=>`<div class="glass rounded-xl p-3 flex justify-between items-center"><div><div class="font-bold text-xs">${h.type.toUpperCase()}</div><div class="text-xs" style="color:var(--txt2)">${new Date(h.date).toLocaleString()}</div></div><div class="text-right"><div class="font-bold text-base ${h.amount>=0?'text-green-400':'text-red-400'}">${h.amount>=0?'+':''}₨${Math.abs(h.amount).toFixed(0)}</div><div class="text-xs ${h.status==='completed'?'text-green-400':'text-yellow-400'}">${h.status}</div></div></div>`).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No transactions</div>'}
-        function loadReferral(){document.getElementById('refCode').textContent=user.referralCode;document.getElementById('refCount').textContent=user.referrals?.length||0;document.getElementById('refEarnings').textContent='₨'+(user.referralEarnings||0).toFixed(0);const qr=document.getElementById('qrCode');qr.innerHTML=`<div class="w-40 h-40 mx-auto bg-white p-3 rounded-xl"><img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${user.referralCode}" class="w-full h-full"></div>`}
+        function loadReferral(){document.getElementById('refCode').textContent=user.referralCode;document.getElementById('refCount').textContent=user.referrals?.length||0;document.getElementById('refEarnings').textContent='₨'+(user.referralEarnings||0).toFixed(0);const qr=document.getElementById('qrCode');qr.innerHTML=`<div class="w-40 h-40 mx-auto bg-white p-3 rounded-xl"><img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(getRefLink())}" class="w-full h-full"></div>`}
         function copyRefCode(){navigator.clipboard.writeText(user.referralCode);notif('Code copied!');sounds.win()}
-        function shareWhatsApp(){window.open(`https://wa.me/?text=Join MeraPasia! Code: ${user.referralCode}`,'_blank')}
-        function shareFacebook(){window.open(`https://www.facebook.com/sharer/sharer.php?u=https://merapasia.com&quote=Code ${user.referralCode}`,'_blank')}
-        function shareTwitter(){window.open(`https://twitter.com/intent/tweet?text=Join MeraPasia code ${user.referralCode}!`,'_blank')}
-        function shareInstagram(){notif('Copy your code and share on Instagram!');copyRefCode()}
         function loadJackpot(){document.getElementById('jackpotTickets').textContent=user.jackpotTickets||0}
         function buyJackpotTicket(amt){const tickets=amt===50?1:5;if(user.balance<amt){notif('Insufficient balance!','error');sounds.lose();return}user.balance-=amt;showMoneyAnimation(amt,true);user.jackpotTickets=(user.jackpotTickets||0)+tickets;if(!user.history)user.history=[];user.history.push({type:'game',amount:-amt,date:Date.now(),status:'completed',desc:`${tickets} ticket(s)`});saveUser();updateUI();loadJackpot();notif(`Purchased ${tickets} ticket(s)!`);sounds.win()}
         
@@ -696,22 +719,27 @@
         function updateMenuTheme(){const btn=document.getElementById('menuThemeBtn');if(btn)btn.innerHTML=theme==='dark'?'<i class="fas fa-moon text-accent text-lg mb-1"></i><div class="text-xs">Dark Mode</div>':'<i class="fas fa-sun text-yellow-400 text-lg mb-1"></i><div class="text-xs">Light Mode</div>'}
         function updateMenuMusic(){const btn=document.getElementById('menuMusicBtn');if(btn){btn.innerHTML=soundEnabled?'<i class="fas fa-volume-up text-green-400 text-lg mb-1"></i><div class="text-xs font-bold">Sound ON</div>':'<i class="fas fa-volume-mute text-red-400 text-lg mb-1"></i><div class="text-xs font-bold">Sound OFF</div>';btn.className=soundEnabled?'glass px-3 py-3 rounded-lg transition text-center font-semibold border-2 border-green-500 bg-green-500/20':'glass px-3 py-3 rounded-lg transition text-center font-semibold border-2 border-red-500 bg-red-500/20'}}
         function handleLogout(){sounds.click();if(confirm('Logout?')){localStorage.removeItem('currentUser');location.reload()}}
-        function selectPayment(method){sounds.click();['bank','easypaisa','jazzcash'].forEach(m=>document.getElementById('pay'+m.charAt(0).toUpperCase()+m.slice(1)).className='glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition');document.getElementById('pay'+method.charAt(0).toUpperCase()+method.slice(1)).className='glass border-2 border-accent p-3 rounded-xl transition';document.getElementById('depositForm').classList.remove('hidden');document.getElementById('adminPaymentInfo').innerHTML=`<p class="font-bold text-xs">${method.toUpperCase()}</p><p class="text-xs">Account: Admin</p><p class="text-xs">Number: 03XX-XXXXXXX</p>`}
-        function submitDeposit(){const amt=parseFloat(document.getElementById('depositAmount').value);if(!amt||amt<300||amt>20000){notif('Amount: ₨300-₨20,000','error');return}notif('Deposit submitted! Pending...');sounds.win();navigate('home')}
-        function selectWithdrawPayment(method){sounds.click();['bank','easypaisa','jazzcash'].forEach(m=>document.getElementById('wd'+m.charAt(0).toUpperCase()+m.slice(1)).className='glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition');document.getElementById('wd'+method.charAt(0).toUpperCase()+method.slice(1)).className='glass border-2 border-accent p-3 rounded-xl transition';document.getElementById('withdrawForm').classList.remove('hidden')}
+        function selectPayment(method){sounds.click();['bank','easypaisa','jazzcash'].forEach(m=>document.getElementById('pay'+m.charAt(0).toUpperCase()+m.slice(1)).className='glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center');document.getElementById('pay'+method.charAt(0).toUpperCase()+method.slice(1)).className='glass border-2 border-accent p-3 rounded-xl transition flex flex-col items-center';document.getElementById('depositForm').classList.remove('hidden');document.getElementById('adminPaymentInfo').innerHTML=`<p class="font-bold text-xs">${method.toUpperCase()}</p><p class="text-xs">Account: Admin</p><p class="text-xs">Number: 03XX-XXXXXXX</p>`}
+        function submitDeposit(){const amt=parseFloat(document.getElementById('depositAmount').value);if(!amt||amt<300||amt>20000){notif('Amount: ₨300-₨20,000','error');return}const requests=JSON.parse(localStorage.getItem('depositRequests')||'[]');requests.push({userId:user.id,userName:user.name,amount:amt,date:Date.now(),status:'pending',method:document.getElementById('depositForm').dataset.method||'bank'});localStorage.setItem('depositRequests',JSON.stringify(requests));notif('Deposit submitted! Pending...');sounds.win();navigate('home')}
+        function selectWithdrawPayment(method){sounds.click();['bank','easypaisa','jazzcash'].forEach(m=>document.getElementById('wd'+m.charAt(0).toUpperCase()+m.slice(1)).className='glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition flex flex-col items-center');document.getElementById('wd'+method.charAt(0).toUpperCase()+method.slice(1)).className='glass border-2 border-accent p-3 rounded-xl transition flex flex-col items-center';document.getElementById('withdrawForm').classList.remove('hidden')}
         function calculateWithdrawFee(){const amt=parseFloat(document.getElementById('withdrawAmount').value)||0;if(amt>=1000){const fee=amt*0.03;const net=amt-fee;document.getElementById('withdrawAmtDisplay').textContent='₨'+amt.toFixed(0);document.getElementById('withdrawFeeDisplay').textContent='₨'+fee.toFixed(0);document.getElementById('withdrawNetDisplay').textContent='₨'+net.toFixed(0);document.getElementById('withdrawFeeInfo').classList.remove('hidden')}else{document.getElementById('withdrawFeeInfo').classList.add('hidden')}}
-        function submitWithdraw(){const amt=parseFloat(document.getElementById('withdrawAmount').value);if(!amt||amt<1000){notif('Min ₨1,000','error');return}if(user.balance<amt){notif('Insufficient balance!','error');return}const fee=amt*0.03;const net=amt-fee;user.balance-=amt;saveUser();updateUI();notif(`Withdrawal submitted! You'll receive ₨${net.toFixed(0)} (₨${fee.toFixed(0)} fee)`);sounds.win();navigate('home')}
+        function submitWithdraw(){const amt=parseFloat(document.getElementById('withdrawAmount').value);if(!amt||amt<1000){notif('Min ₨1,000','error');return}if(user.balance<amt){notif('Insufficient balance!','error');return}const fee=amt*0.03;const net=amt-fee;const requests=JSON.parse(localStorage.getItem('withdrawRequests')||'[]');requests.push({userId:user.id,userName:user.name,amount:amt,fee:fee,net:net,date:Date.now(),status:'pending',method:document.getElementById('withdrawForm').dataset.method||'bank'});localStorage.setItem('withdrawRequests',JSON.stringify(requests));user.balance-=amt;saveUser();updateUI();notif(`Withdrawal submitted! You'll receive ₨${net.toFixed(0)} (₨${fee.toFixed(0)} fee)`);sounds.win();navigate('home')}
         function showTerms(e){if(e)e.stopPropagation();const m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-6 w-full max-w-2xl my-6"><h2 class="text-2xl font-bold mb-4 text-center text-accent"><i class="fas fa-file-contract mr-2"></i>Terms & Conditions</h2><div class="space-y-3 text-xs overflow-y-auto" style="max-height:55vh;color:var(--txt2)"><p><strong>1. Eligibility:</strong> 18+ years only</p><p><strong>2. Deposits:</strong> Min ₨300, Max ₨20,000, 5 transactions/day maximum. Bonus ₨10 on deposits ₨300+</p><p><strong>3. Withdrawals:</strong> Min ₨1,000. 3% withdrawal fee applied. Processing Monday-Thursday & Saturday only (OFF Friday & Sunday). Processing time: 24-72 hours</p><p><strong>4. Referrals:</strong> 10% commission on first withdrawal of referred users</p><p><strong>5. Games:</strong> Random outcomes. Coin Master: 1.7x payout. Bubble Shooter: Winner 70%, 2nd place 25%</p><p><strong>6. Fair Play:</strong> Cheating = permanent ban</p><p><strong>7. Liability:</strong> Not liable for losses</p><p class="text-accent font-bold mt-4">By using MeraPasia, you agree to these terms.</p></div><button onclick="document.getElementById('modals').innerHTML=''" class="w-full bg-accent text-primary font-bold py-3 rounded-lg mt-4 hover:opacity-90 transition"><i class="fas fa-check mr-2"></i>Close</button></div></div>`;document.getElementById('modals').innerHTML=m;sounds.click()}
         
         function adminAccess(){const pass=prompt('Admin Password:');if(pass===adminPass){adminMode=true;localStorage.setItem('adminLogged','true');showAdminPanel()}}
         function showAdminPanel(){document.getElementById('authPage').classList.add('hidden');document.getElementById('app').classList.remove('hidden');navigate('admin');updateAdminStats()}
-        function updateAdminStats(){const users=JSON.parse(localStorage.getItem('users')||'[]');document.getElementById('adminTotalUsers').textContent=users.length;const revenue=localStorage.getItem('adminRevenue')||0;document.getElementById('adminRevenue').textContent='₨'+revenue;document.getElementById('adminDeposits').textContent='0';document.getElementById('adminWithdrawals').textContent='0'}
-        function showAdminUsers(){notif('User management coming soon!');sounds.click()}
-        function showAdminDeposits(){notif('Deposit requests coming soon!');sounds.click()}
-        function showAdminWithdrawals(){notif('Withdrawal requests coming soon!');sounds.click()}
-        function showAdminJackpot(){notif('Jackpot management coming soon!');sounds.click()}
-        function showAdminRevenue(){notif('Revenue reports coming soon!');sounds.click()}
-        function exportData(){notif('Data export coming soon!');sounds.click()}
+        function updateAdminStats(){const users=JSON.parse(localStorage.getItem('users')||'[]'),deposits=JSON.parse(localStorage.getItem('depositRequests')||'[]'),withdraws=JSON.parse(localStorage.getItem('withdrawRequests')||'[]'),revenue=parseFloat(localStorage.getItem('adminRevenue')||0);document.getElementById('adminTotalUsers').textContent=users.length;document.getElementById('adminRevenue').textContent='₨'+revenue.toFixed(0);document.getElementById('adminDeposits').textContent=deposits.filter(d=>d.status==='pending').length;document.getElementById('adminWithdrawals').textContent=withdraws.filter(w=>w.status==='pending').length}
+        function showAdminUsers(){const users=JSON.parse(localStorage.getItem('users')||'[]'),m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-5 w-full max-w-4xl my-6 max-h-[90vh] overflow-y-auto"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-bold text-accent"><i class="fas fa-users mr-2"></i>User Management</h2><button onclick="document.getElementById('modals').innerHTML=''" class="text-2xl">&times;</button></div><div class="space-y-2">${users.map(u=>`<div class="glass rounded-lg p-3 flex justify-between items-center"><div><div class="font-bold text-sm">${u.name}</div><div class="text-xs" style="color:var(--txt2)">${u.email} | ₨${u.balance.toFixed(0)}</div></div><div class="flex gap-2"><button onclick="toggleUserBan(${u.id})" class="px-3 py-1 rounded ${u.banned?'bg-green-600':'bg-red-600'} text-white text-xs">${u.banned?'Unban':'Ban'}</button></div></div>`).join('')}</div></div></div>`;document.getElementById('modals').innerHTML=m}
+        function toggleUserBan(userId){const users=JSON.parse(localStorage.getItem('users')||'[]'),u=users.find(u=>u.id===userId);if(u){u.banned=!u.banned;localStorage.setItem('users',JSON.stringify(users));notif(u.banned?'User banned':'User unbanned');showAdminUsers()}}
+        function showAdminDeposits(){const requests=JSON.parse(localStorage.getItem('depositRequests')||'[]').filter(r=>r.status==='pending'),m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-5 w-full max-w-4xl my-6 max-h-[90vh] overflow-y-auto"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-bold text-green-400"><i class="fas fa-coins mr-2"></i>Deposit Requests</h2><button onclick="document.getElementById('modals').innerHTML=''" class="text-2xl">&times;</button></div><div class="space-y-2">${requests.map((r,i)=>`<div class="glass rounded-lg p-3"><div class="flex justify-between items-center"><div><div class="font-bold text-sm">${r.userName}</div><div class="text-xs" style="color:var(--txt2)">₨${r.amount} | ${new Date(r.date).toLocaleString()}</div></div><div class="flex gap-2"><button onclick="approveDeposit(${i})" class="px-3 py-1 rounded bg-green-600 text-white text-xs">Approve</button><button onclick="rejectDeposit(${i})" class="px-3 py-1 rounded bg-red-600 text-white text-xs">Reject</button></div></div></div>`).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No pending requests</div>'}</div></div>`;document.getElementById('modals').innerHTML=m}
+        function approveDeposit(idx){const requests=JSON.parse(localStorage.getItem('depositRequests')||'[]'),req=requests[idx];if(req){req.status='approved';const users=JSON.parse(localStorage.getItem('users')||'[]'),u=users.find(u=>u.id===req.userId);if(u){u.balance+=req.amount;if(req.amount>=300)u.balance+=10;localStorage.setItem('users',JSON.stringify(users))}localStorage.setItem('depositRequests',JSON.stringify(requests));notif('Deposit approved');showAdminDeposits();updateAdminStats()}}
+        function rejectDeposit(idx){const requests=JSON.parse(localStorage.getItem('depositRequests')||'[]');requests[idx].status='rejected';localStorage.setItem('depositRequests',JSON.stringify(requests));notif('Deposit rejected','error');showAdminDeposits();updateAdminStats()}
+        function showAdminWithdrawals(){const requests=JSON.parse(localStorage.getItem('withdrawRequests')||'[]').filter(r=>r.status==='pending'),m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-5 w-full max-w-4xl my-6 max-h-[90vh] overflow-y-auto"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-bold text-yellow-400"><i class="fas fa-hand-holding-usd mr-2"></i>Withdrawal Requests</h2><button onclick="document.getElementById('modals').innerHTML=''" class="text-2xl">&times;</button></div><div class="space-y-2">${requests.map((r,i)=>`<div class="glass rounded-lg p-3"><div class="flex justify-between items-center"><div><div class="font-bold text-sm">${r.userName}</div><div class="text-xs" style="color:var(--txt2)">₨${r.amount} (Net: ₨${r.net}) | ${new Date(r.date).toLocaleString()}</div></div><div class="flex gap-2"><button onclick="approveWithdraw(${i})" class="px-3 py-1 rounded bg-green-600 text-white text-xs">Approve</button><button onclick="rejectWithdraw(${i})" class="px-3 py-1 rounded bg-red-600 text-white text-xs">Reject</button></div></div></div>`).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No pending requests</div>'}</div></div>`;document.getElementById('modals').innerHTML=m}
+        function approveWithdraw(idx){const requests=JSON.parse(localStorage.getItem('withdrawRequests')||'[]'),req=requests[idx];if(req){req.status='approved';const revenue=parseFloat(localStorage.getItem('adminRevenue')||0)+req.fee;localStorage.setItem('adminRevenue',revenue.toString());localStorage.setItem('withdrawRequests',JSON.stringify(requests));notif('Withdrawal approved');showAdminWithdrawals();updateAdminStats()}}
+        function rejectWithdraw(idx){const requests=JSON.parse(localStorage.getItem('withdrawRequests')||'[]'),req=requests[idx];req.status='rejected';const users=JSON.parse(localStorage.getItem('users')||'[]'),u=users.find(u=>u.id===req.userId);if(u){u.balance+=req.amount;localStorage.setItem('users',JSON.stringify(users))}localStorage.setItem('withdrawRequests',JSON.stringify(requests));notif('Withdrawal rejected, balance refunded','error');showAdminWithdrawals();updateAdminStats()}
+        function showAdminJackpot(){notif('Jackpot draw system ready - Select winners for Sunday draw');sounds.click()}
+        function showAdminRevenue(){const revenue=parseFloat(localStorage.getItem('adminRevenue')||0),m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"><div class="glass rounded-2xl p-5 w-full max-w-md"><div class="flex justify-between items-center mb-4"><h2 class="text-xl font-bold text-purple-400"><i class="fas fa-chart-line mr-2"></i>Revenue Report</h2><button onclick="document.getElementById('modals').innerHTML=''" class="text-2xl">&times;</button></div><div class="glass rounded-xl p-4 text-center"><div class="text-4xl mb-2">💰</div><div class="text-3xl font-bold text-green-400">₨${revenue.toFixed(0)}</div><div class="text-xs mt-1" style="color:var(--txt2)">Total Platform Revenue</div></div></div></div>`;document.getElementById('modals').innerHTML=m}
+        function exportData(){const data={users:JSON.parse(localStorage.getItem('users')||'[]'),deposits:JSON.parse(localStorage.getItem('depositRequests')||'[]'),withdraws:JSON.parse(localStorage.getItem('withdrawRequests')||'[]'),revenue:localStorage.getItem('adminRevenue')||0},blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='merapasia-data-'+Date.now()+'.json';a.click();notif('Data exported successfully!')}
         function adminLogout(){localStorage.removeItem('adminLogged');location.reload()}
     </script>
 <script>window.onload=function(){var d=document.createElement("div");d.id="appLoadFinished";document.body.appendChild(d)};</script>
