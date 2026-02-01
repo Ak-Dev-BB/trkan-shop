@@ -56,11 +56,6 @@
         .admin-dots{position:fixed;bottom:15px;left:15px;opacity:0;cursor:pointer;z-index:50;color:rgba(255,255,255,0.03);font-size:24px;user-select:none}
         .admin-dots:active{opacity:0.5}
         
-        .btn-image{width:100%;height:100px;object-fit:contain;transition:transform 0.2s}
-        .btn-image:active{transform:scale(0.95)}
-        .btn-container{position:relative;width:100%;display:flex;align-items:center;justify-content:center;border-radius:12px;overflow:hidden;transition:all 0.2s;padding:4px 0}
-        .btn-container:active{transform:scale(0.98)}
-        
         .coin-flip-scene{perspective:1000px;margin:20px auto;width:200px;height:200px;position:relative}
         .coin-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 3s cubic-bezier(0.25,0.46,0.45,0.94)}
         .coin-3d.spinning{transform:rotateY(1800deg)}
@@ -73,20 +68,16 @@
         @keyframes shimmer{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
         .game-card:active{transform:scale(0.98)}
         
-        .chat-widget{position:fixed;bottom:20px;right:20px;z-index:150}
-        .chat-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#10B981,#059669);color:white;border:3px solid #FFD700;box-shadow:0 4px 20px rgba(16,185,129,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;transition:transform 0.2s}
-        .chat-btn:active{transform:scale(0.9)}
-        .chat-box{position:absolute;bottom:70px;right:0;width:320px;height:450px;background:var(--card);border:2px solid var(--border);border-radius:20px;box-shadow:0 10px 50px rgba(0,0,0,0.5);display:none;flex-direction:column;overflow:hidden}
-        .chat-box.active{display:flex}
-        .chat-header{background:linear-gradient(135deg,#1E40AF,#1E3A8A);padding:15px;color:white;font-weight:bold;display:flex;justify-content:space-between;align-items:center}
-        .chat-messages{flex:1;padding:15px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-        .chat-msg{padding:10px 15px;border-radius:15px;max-width:80%;font-size:13px}
-        .chat-msg.bot{background:rgba(30,64,175,0.3);align-self:flex-start}
-        .chat-msg.user{background:rgba(245,158,11,0.3);align-self:flex-end}
-        .chat-input-area{padding:10px;border-top:1px solid var(--border);display:flex;gap:8px}
-        .chat-input{flex:1;padding:8px 12px;border-radius:20px;border:1px solid var(--border);background:var(--glass);color:var(--txt);font-size:13px}
+        .bubble-game-canvas{width:100%;max-width:400px;height:500px;background:linear-gradient(135deg,#1e3a8a,#1e40af);border-radius:20px;border:3px solid #F59E0B;position:relative;overflow:hidden;touch-action:none}
+        .bubble{position:absolute;width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);transition:all 0.15s;box-shadow:inset 0 0 10px rgba(255,255,255,0.5),0 4px 15px rgba(0,0,0,0.3)}
+        .bubble-red{background:radial-gradient(circle at 30% 30%,#ff6b6b,#c92a2a)}
+        .bubble-blue{background:radial-gradient(circle at 30% 30%,#4dabf7,#1971c2)}
+        .bubble-green{background:radial-gradient(circle at 30% 30%,#51cf66,#2f9e44)}
+        .bubble-yellow{background:radial-gradient(circle at 30% 30%,#ffd43b,#f59f00)}
+        .bubble-purple{background:radial-gradient(circle at 30% 30%,#cc5de8,#9c36b5)}
+        .shooter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;border:3px solid #FFD700;box-shadow:0 0 20px rgba(255,215,0,0.6);cursor:pointer}
         
-        @media(max-width:768px){.treasure-scene{width:220px;height:220px}.chat-box{width:90vw;max-width:320px}}
+        @media(max-width:768px){.treasure-scene{width:220px;height:220px}}
     </style>
 </head>
 <body>
@@ -134,15 +125,15 @@
         <nav class="glass shadow-xl sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                    <button onclick="showMenu()" class="glass border border-accent px-2 py-2 rounded-lg transition hover:bg-accent/10"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/TcyPgRTGf3iTtfjpNSQgrw/1000298083-removebg-preview.png" class="h-8 w-10 object-contain"></button>
+                    <button onclick="showMenu()" class="glass border border-accent px-3 py-2 rounded-lg transition hover:bg-accent/10"><i class="fas fa-bars text-accent text-xl"></i></button>
                     <div onclick="navigate('home')" class="flex flex-col items-center cursor-pointer">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/J9SGhGM2KsGpwVbQfWVgWb/1000298233-removebg-preview.png" class="w-20 h-20 object-contain">
-                        <div class="font-bold text-base bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent -mt-2">MeraPasia</div>
+                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/J9SGhGM2KsGpwVbQfWVgWb/1000298233-removebg-preview.png" class="w-14 h-14 object-contain">
+                        <div class="font-bold text-xs bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent -mt-1">MeraPasia</div>
                     </div>
                 </div>
-                <div class="glass px-2.5 py-2 rounded-xl glow border-2 border-accent/50">
+                <div class="glass px-3 py-2 rounded-xl glow border-2 border-accent/50">
                     <div class="text-[9px] font-semibold mb-0.5" style="color:var(--txt2)">💰 BALANCE</div>
-                    <div class="font-black text-accent text-base tracking-tight">Rs<span id="balance">0</span></div>
+                    <div class="font-black text-accent text-base tracking-tight">₨<span id="balance">0</span></div>
                 </div>
             </div>
         </nav>
@@ -180,24 +171,24 @@
                 
                 <div class="grid grid-cols-2 gap-3 mb-4">
                     <button onclick="navigate('deposit')" class="glass rounded-2xl p-5 hover:bg-white/5 transition glow">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/KKfDK7MnhxNcknxrVP2Ee5/1000298018-removebg-preview.png" class="w-16 h-16 mx-auto mb-2 object-contain">
+                        <div class="text-4xl mb-2">💳</div>
                         <div class="font-bold text-base">Deposit</div>
-                        <div class="text-xs text-green-400">Min Rs300</div>
+                        <div class="text-xs text-green-400">Min ₨300</div>
                     </button>
                     <button onclick="navigate('withdraw')" class="glass rounded-2xl p-5 hover:bg-white/5 transition glow">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/KpJkB3HNEqhgoRjRSbaweP/1000298019-removebg-preview.png" class="w-16 h-16 mx-auto mb-2 object-contain">
+                        <div class="text-4xl mb-2">💰</div>
                         <div class="font-bold text-base">Withdraw</div>
-                        <div class="text-xs text-accent">Min Rs1000</div>
+                        <div class="text-xs text-accent">Min ₨1000</div>
                     </button>
                 </div>
                 
                 <div class="grid grid-cols-2 gap-3 mb-4">
                     <button onclick="navigate('history')" class="glass rounded-xl p-4 hover:bg-white/5 transition">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/cjyCDsU8HvyiAyYSyYszUN/1000298053-removebg-preview.png" class="w-14 h-14 mx-auto mb-2 object-contain">
+                        <div class="text-3xl mb-2">📋</div>
                         <div class="font-bold text-sm">History</div>
                     </button>
                     <button onclick="navigate('referral')" class="glass rounded-xl p-4 hover:bg-white/5 transition">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/HTud9YkTB9XVaa8T4JcbmK/1000298050-removebg-preview~2.png" class="w-14 h-14 mx-auto mb-2 object-contain">
+                        <div class="text-3xl mb-2">👥</div>
                         <div class="font-bold text-sm">Referrals</div>
                         <div class="text-xs text-purple-300">10% Commission</div>
                     </button>
@@ -206,7 +197,7 @@
                 <button onclick="navigate('leaderboard')" class="w-full glass rounded-xl p-4 mb-4 glow hover:bg-white/5 transition">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/3GQM2iTHacrJBreUm3VJFs/1000298141-removebg-preview.png" class="w-14 h-14 object-contain">
+                            <div class="text-4xl">🏆</div>
                             <div class="text-left">
                                 <div class="font-bold text-base">Champions League</div>
                                 <div class="text-xs" style="color:var(--txt2)">Rankings & Leaderboard</div>
@@ -221,7 +212,7 @@
                     <button onclick="navigate('coin')" class="game-card">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
-                                <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/hyJ8TnHHGWjLBka43QjBdR/1000298021-removebg-preview.png" class="w-16 h-16 object-contain">
+                                <div class="text-5xl">🪙</div>
                                 <div class="text-left">
                                     <div class="font-bold text-base">Coin Master Arena</div>
                                     <div class="text-xs text-green-400">Win 1.7x - Live Players</div>
@@ -230,13 +221,13 @@
                             <i class="fas fa-chevron-right text-accent text-xl"></i>
                         </div>
                     </button>
-                    <button onclick="navigate('wheel')" class="game-card">
+                    <button onclick="navigate('bubble')" class="game-card">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
-                                <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/3ZEFHNFWFf84LVSjzePDxJ/1000298020-removebg-preview.png" class="w-16 h-16 object-contain">
+                                <div class="text-5xl">🎯</div>
                                 <div class="text-left">
-                                    <div class="font-bold text-base">Fortune Wheel</div>
-                                    <div class="text-xs text-yellow-400">Color Betting - Max 5.5x</div>
+                                    <div class="font-bold text-base">Bubble Shooter Arena</div>
+                                    <div class="text-xs text-yellow-400">2 Player Battle - Win 70%</div>
                                 </div>
                             </div>
                             <i class="fas fa-chevron-right text-accent text-xl"></i>
@@ -245,10 +236,10 @@
                     <button onclick="navigate('jackpot')" class="game-card">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
-                                <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/R42brwfsoLwoZ9AVqWCyYG/1000298022-removebg-preview.png" class="w-16 h-16 object-contain">
+                                <div class="text-5xl">🎰</div>
                                 <div class="text-left">
                                     <div class="font-bold text-base">Lucky Jackpot</div>
-                                    <div class="text-xs text-purple-400">Sunday Draw - Rs50,000</div>
+                                    <div class="text-xs text-purple-400">Sunday Draw - ₨50,000</div>
                                 </div>
                             </div>
                             <i class="fas fa-chevron-right text-accent text-xl"></i>
@@ -260,42 +251,30 @@
         
         <div id="profilePage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow">
-                    <div class="mb-5">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/R4eYM7uqGJWALLgg54uwLo/1000298074-removebg-preview.png" class="btn-image mx-auto">
-                    </div>
+                    <h2 class="text-2xl font-bold mb-5 text-center"><i class="fas fa-user-circle mr-2 text-accent"></i>My Profile</h2>
                     <div class="space-y-4">
                         <div class="text-center">
                             <img id="profileAvatar" class="w-28 h-28 rounded-full border-4 border-accent mx-auto mb-3" src="">
                             <input type="file" id="avatarInput" accept="image/*" class="hidden">
-                            <button onclick="document.getElementById('avatarInput').click()" class="btn-container w-auto px-6 mx-auto">
-                                <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/M7isn6Z8jVCe5jR5VJkusr/1000298082-removebg-preview.png" class="h-14 object-contain">
-                            </button>
+                            <button onclick="document.getElementById('avatarInput').click()" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-700 transition"><i class="fas fa-camera mr-2"></i>Change Photo</button>
                         </div>
                         <div>
-                            <label class="block text-xs mb-1" style="color:var(--txt2)">Nickname</label>
-                            <input type="text" id="profileNickname" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
+                            <label class="block text-xs mb-1 font-semibold" style="color:var(--txt2)">Nickname</label>
+                            <input type="text" id="profileNickname" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm font-semibold" style="background:var(--card);color:var(--txt)">
                         </div>
                         <div>
-                            <label class="block text-xs mb-1" style="color:var(--txt2)">Bio</label>
+                            <label class="block text-xs mb-1 font-semibold" style="color:var(--txt2)">Bio</label>
                             <textarea id="profileBio" rows="2" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)"></textarea>
                         </div>
                         <div>
-                            <label class="block text-xs mb-1" style="color:var(--txt2)">Date of Birth</label>
+                            <label class="block text-xs mb-1 font-semibold" style="color:var(--txt2)">Date of Birth</label>
                             <input type="date" id="profileDob" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
                         </div>
-                        <button onclick="saveProfile()" class="w-full btn-container">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/KuyivSZMiLdxuQjZqq7jMG/1000298079-removebg-preview.png" class="btn-image">
-                        </button>
-                        <button onclick="changePassword()" class="w-full btn-container">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/KhaC3MgBknCy2N5sRzGedi/1000298080-removebg-preview.png" class="btn-image">
-                        </button>
-                        <button onclick="deleteAccount()" class="w-full btn-container">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/9G47SqY9KYyafgpmzqdsxe/1000298078-removebg-preview.png" class="btn-image">
-                        </button>
+                        <button onclick="saveProfile()" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition"><i class="fas fa-save mr-2"></i>Save Profile</button>
+                        <button onclick="changePassword()" class="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition"><i class="fas fa-key mr-2"></i>Change Password</button>
+                        <button onclick="deleteAccount()" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-700 transition"><i class="fas fa-trash-alt mr-2"></i>Delete Account</button>
                     </div>
                 </div>
             </div>
@@ -303,25 +282,23 @@
 
         <div id="depositPage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow mb-4">
                     <h2 class="text-xl font-bold mb-3 text-green-400"><i class="fas fa-wallet mr-2"></i>Deposit Money</h2>
-                    <p class="mb-3 text-xs" style="color:var(--txt2)">Min: Rs300 | Max: Rs20,000 | Daily Limit: 5 times</p>
-                    <div class="bg-green-900/30 border-2 border-green-500 rounded-xl p-3 mb-4 text-sm"><i class="fas fa-gift mr-2 text-green-400"></i><span class="font-bold text-green-300">Deposit Rs300+ and get Rs10 Instant Bonus!</span></div>
+                    <p class="mb-3 text-xs font-semibold" style="color:var(--txt2)">Min: ₨300 | Max: ₨20,000 | Daily Limit: 5 times</p>
+                    <div class="bg-green-900/30 border-2 border-green-500 rounded-xl p-3 mb-4 text-sm"><i class="fas fa-gift mr-2 text-green-400"></i><span class="font-bold text-green-300">Deposit ₨300+ and get ₨10 Instant Bonus!</span></div>
                     <h3 class="font-bold text-base mb-3">Select Payment Method:</h3>
                     <div class="grid grid-cols-3 gap-3 mb-4">
                         <button onclick="selectPayment('bank')" id="payBank" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/DhHHnxxgr8VLM9aqkwRy4r/1000297934-removebg-preview.png" class="w-12 h-12 mx-auto mb-1 object-contain">
+                            <div class="text-3xl mb-1">🏦</div>
                             <div class="font-bold text-xs">Bank</div>
                         </button>
                         <button onclick="selectPayment('easypaisa')" id="payEasypaisa" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/E8XNfroaCaEovfhEWdY8WW/1000297695-removebg-preview.png" class="w-12 h-12 mx-auto mb-1 object-contain">
+                            <div class="text-3xl mb-1">📱</div>
                             <div class="font-bold text-xs">EasyPaisa</div>
                         </button>
                         <button onclick="selectPayment('jazzcash')" id="payJazzcash" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/PkAZ59AyqJiWCeAxSpFWrh/1000296570-removebg-preview.png" class="w-12 h-12 mx-auto mb-1 object-contain">
+                            <div class="text-3xl mb-1">💳</div>
                             <div class="font-bold text-xs">JazzCash</div>
                         </button>
                     </div>
@@ -330,11 +307,11 @@
                             <h4 class="font-bold mb-1">Send Money To:</h4>
                             <div id="adminPaymentInfo"></div>
                         </div>
-                        <input type="number" id="depositAmount" placeholder="Enter Amount (Rs300-Rs20,000)" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
+                        <input type="number" id="depositAmount" placeholder="Enter Amount (₨300-₨20,000)" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm font-semibold" style="background:var(--card);color:var(--txt)">
                         <input type="text" id="depositAccountName" placeholder="Your Account Holder Name" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
                         <input type="text" id="depositAccountNum" placeholder="Your Account Number" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
                         <div>
-                            <label class="block text-xs mb-1" style="color:var(--txt2)">Upload Payment Screenshot:</label>
+                            <label class="block text-xs mb-1 font-semibold" style="color:var(--txt2)">Upload Payment Screenshot:</label>
                             <input type="file" id="depositScreenshot" accept="image/*" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
                         </div>
                         <button onclick="submitDeposit()" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 text-sm"><i class="fas fa-paper-plane mr-2"></i>Submit Deposit Request</button>
@@ -345,30 +322,42 @@
 
         <div id="withdrawPage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow">
                     <h2 class="text-xl font-bold mb-3 text-accent"><i class="fas fa-hand-holding-usd mr-2"></i>Withdraw Money</h2>
-                    <div class="bg-yellow-900/30 border-2 border-yellow-500 rounded-xl p-3 mb-4 text-sm"><i class="fas fa-info-circle mr-2 text-yellow-300"></i><span class="font-bold">Withdrawals: Processing Mon-Thu & Sat (OFF Friday & Sunday) | 24-72 hours</span></div>
-                    <p class="mb-4 text-xs" style="color:var(--txt2)">Minimum Withdrawal: Rs1,000</p>
+                    <div class="bg-yellow-900/30 border-2 border-yellow-500 rounded-xl p-3 mb-4 text-sm"><i class="fas fa-info-circle mr-2 text-yellow-300"></i><span class="font-bold">Processing Mon-Thu & Sat (OFF Fri & Sun) | 24-72 hours | 3% Fee Applied</span></div>
+                    <p class="mb-4 text-xs font-semibold" style="color:var(--txt2)">Minimum Withdrawal: ₨1,000 (3% withdrawal fee will be deducted)</p>
                     <h3 class="font-bold text-base mb-3">Select Payment Method:</h3>
                     <div class="grid grid-cols-3 gap-3 mb-4">
                         <button onclick="selectWithdrawPayment('bank')" id="wdBank" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/DhHHnxxgr8VLM9aqkwRy4r/1000297934-removebg-preview.png" class="w-12 h-12 mx-auto mb-1 object-contain">
+                            <div class="text-3xl mb-1">🏦</div>
                             <div class="font-bold text-xs">Bank</div>
                         </button>
                         <button onclick="selectWithdrawPayment('easypaisa')" id="wdEasypaisa" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/E8XNfroaCaEovfhEWdY8WW/1000297695-removebg-preview.png" class="w-12 h-12 mx-auto mb-1 object-contain">
+                            <div class="text-3xl mb-1">📱</div>
                             <div class="font-bold text-xs">EasyPaisa</div>
                         </button>
                         <button onclick="selectWithdrawPayment('jazzcash')" id="wdJazzcash" class="glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/PkAZ59AyqJiWCeAxSpFWrh/1000296570-removebg-preview.png" class="w-12 h-12 mx-auto mb-1 object-contain">
+                            <div class="text-3xl mb-1">💳</div>
                             <div class="font-bold text-xs">JazzCash</div>
                         </button>
                     </div>
                     <div id="withdrawForm" class="hidden space-y-3">
-                        <input type="number" id="withdrawAmount" placeholder="Enter Amount (Min Rs1,000)" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
+                        <input type="number" id="withdrawAmount" placeholder="Enter Amount (Min ₨1,000)" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm font-semibold" style="background:var(--card);color:var(--txt)" oninput="calculateWithdrawFee()">
+                        <div id="withdrawFeeInfo" class="bg-blue-900/30 border-2 border-blue-500 rounded-xl p-3 text-sm hidden">
+                            <div class="flex justify-between mb-1">
+                                <span>Amount:</span>
+                                <span class="font-bold" id="withdrawAmtDisplay">₨0</span>
+                            </div>
+                            <div class="flex justify-between mb-1">
+                                <span>Fee (3%):</span>
+                                <span class="font-bold text-red-400" id="withdrawFeeDisplay">₨0</span>
+                            </div>
+                            <div class="flex justify-between border-t border-blue-400 pt-1 mt-1">
+                                <span class="font-bold">You'll Receive:</span>
+                                <span class="font-bold text-green-400" id="withdrawNetDisplay">₨0</span>
+                            </div>
+                        </div>
                         <input type="text" id="withdrawAccountName" placeholder="Account Holder Name" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
                         <input type="text" id="withdrawAccountNum" placeholder="Account Number" class="w-full glass border-2 border-accent/30 rounded-lg px-4 py-2.5 text-sm" style="background:var(--card);color:var(--txt)">
                         <button onclick="submitWithdraw()" class="w-full bg-accent text-primary font-bold py-3 rounded-lg hover:opacity-90 text-sm"><i class="fas fa-paper-plane mr-2"></i>Submit Withdrawal Request</button>
@@ -379,13 +368,9 @@
 
         <div id="historyPage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow">
-                    <div class="mb-4">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/RqzB3JcxF6DVnxt4HyTmZP/1000298073-removebg-preview.png" class="btn-image mx-auto">
-                    </div>
+                    <h2 class="text-2xl font-bold mb-4 text-center"><i class="fas fa-history mr-2 text-accent"></i>Transaction History</h2>
                     <div class="flex gap-2 mb-4 flex-wrap">
                         <button onclick="filterHistory('all')" id="filterAll" class="px-4 py-2 rounded-lg bg-accent text-primary font-bold text-xs">All</button>
                         <button onclick="filterHistory('deposit')" id="filterDeposit" class="px-4 py-2 rounded-lg glass text-xs">Deposits</button>
@@ -399,12 +384,10 @@
 
         <div id="referralPage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow mb-4">
                     <h2 class="text-xl font-bold mb-3 text-purple-400"><i class="fas fa-users mr-2"></i>Referral Program</h2>
-                    <p class="mb-4 text-xs" style="color:var(--txt2)">Earn 10% commission on your referral's first withdrawal!</p>
+                    <p class="mb-4 text-xs font-semibold" style="color:var(--txt2)">Earn 10% commission on your referral's first withdrawal!</p>
                     <div class="bg-purple-900/30 border-2 border-purple-500 rounded-xl p-4 mb-4 text-center">
                         <div class="text-xs mb-1" style="color:var(--txt2)">Your Referral Code:</div>
                         <div class="text-2xl font-bold text-accent mb-3" id="refCode"></div>
@@ -419,28 +402,28 @@
                         </div>
                         <div class="glass rounded-xl p-3 text-center">
                             <div class="text-2xl mb-1">💰</div>
-                            <div class="text-xl font-bold text-green-400" id="refEarnings">Rs0</div>
+                            <div class="text-xl font-bold text-green-400" id="refEarnings">₨0</div>
                             <div class="text-xs" style="color:var(--txt2)">Earned</div>
                         </div>
                         <div class="glass rounded-xl p-3 text-center">
                             <div class="text-2xl mb-1">⏳</div>
-                            <div class="text-xl font-bold text-yellow-400" id="refPending">Rs0</div>
+                            <div class="text-xl font-bold text-yellow-400" id="refPending">₨0</div>
                             <div class="text-xs" style="color:var(--txt2)">Pending</div>
                         </div>
                     </div>
                     <h3 class="font-bold text-base mb-2">Share on Social Media:</h3>
                     <div class="grid grid-cols-2 gap-2">
                         <button onclick="shareWhatsApp()" class="glass border-2 border-green-500 px-3 py-3 rounded-lg font-bold hover:bg-green-500/20 text-xs flex items-center justify-center">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/g6FoSV7n2KUjKrrgYpzpvj/1000298058-removebg-preview.png" class="w-10 h-10 mr-2 object-contain">WhatsApp
+                            <span class="text-2xl mr-2">📱</span>WhatsApp
                         </button>
                         <button onclick="shareFacebook()" class="glass border-2 border-blue-500 px-3 py-3 rounded-lg font-bold hover:bg-blue-500/20 text-xs flex items-center justify-center">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/NCYWfiRtyZroFEzM2aSwSf/1000298061-removebg-preview.png" class="w-10 h-10 mr-2 object-contain">Facebook
+                            <span class="text-2xl mr-2">📘</span>Facebook
                         </button>
                         <button onclick="shareInstagram()" class="glass border-2 border-pink-500 px-3 py-3 rounded-lg font-bold hover:bg-pink-500/20 text-xs flex items-center justify-center">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/8avKyjRLNzDhq5bmxJ2pab/1000298066-removebg-preview.png" class="w-10 h-10 mr-2 object-contain">Instagram
+                            <span class="text-2xl mr-2">📸</span>Instagram
                         </button>
                         <button onclick="shareTwitter()" class="glass border-2 border-sky-500 px-3 py-3 rounded-lg font-bold hover:bg-sky-500/20 text-xs flex items-center justify-center">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/Da4E5bKRdzMKzWAepsCpv4/1000298062-removebg-preview.png" class="w-10 h-10 mr-2 object-contain">X (Twitter)
+                            <span class="text-2xl mr-2">🐦</span>X (Twitter)
                         </button>
                     </div>
                 </div>
@@ -449,9 +432,7 @@
 
         <div id="leaderboardPage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow">
                     <h2 class="text-xl font-bold mb-4 text-yellow-300"><i class="fas fa-trophy mr-2"></i>Champions League</h2>
                     <div id="leaderboardList" class="space-y-2"></div>
@@ -461,14 +442,14 @@
         
         <div id="coinPage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow text-center">
                     <h2 class="text-xl font-bold mb-3">🪙 Coin Master Arena</h2>
                     <p class="text-xs mb-3" style="color:var(--txt2)">Pick Head or Tail & Win 1.7x!</p>
-                    <div class="bg-blue-900/30 border border-blue-500 rounded-lg p-2 mb-4 text-xs">
-                        <span class="font-bold text-accent" id="coinTimer">20</span>s | <span class="text-green-400" id="coinPlayers">0 Players</span> | Pool: <span class="text-yellow-400" id="coinPool">Rs0</span>
+                    <div class="bg-blue-900/30 border border-blue-500 rounded-lg p-3 mb-4 text-sm">
+                        <div class="text-3xl font-bold text-accent mb-1" id="coinTimer">20</div>
+                        <div class="text-xs">seconds remaining</div>
+                        <div class="mt-2"><span class="text-green-400" id="coinPlayers">0 Players</span> | Pool: <span class="text-yellow-400" id="coinPool">₨0</span></div>
                     </div>
                     <div id="coinGame" class="space-y-4">
                         <div class="coin-flip-scene">
@@ -479,12 +460,12 @@
                         </div>
                         <h3 class="font-bold mb-2">Choose Bet Amount:</h3>
                         <div class="grid grid-cols-3 gap-2 mb-4">
-                            <button onclick="setCoinBet(20)" id="coinBet20" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">Rs20</button>
-                            <button onclick="setCoinBet(40)" id="coinBet40" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">Rs40</button>
-                            <button onclick="setCoinBet(60)" id="coinBet60" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">Rs60</button>
-                            <button onclick="setCoinBet(80)" id="coinBet80" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">Rs80</button>
-                            <button onclick="setCoinBet(150)" id="coinBet150" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">Rs150</button>
-                            <button onclick="setCoinBet(200)" id="coinBet200" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">Rs200</button>
+                            <button onclick="setCoinBet(20)" id="coinBet20" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">₨20</button>
+                            <button onclick="setCoinBet(40)" id="coinBet40" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">₨40</button>
+                            <button onclick="setCoinBet(60)" id="coinBet60" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">₨60</button>
+                            <button onclick="setCoinBet(80)" id="coinBet80" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">₨80</button>
+                            <button onclick="setCoinBet(150)" id="coinBet150" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">₨150</button>
+                            <button onclick="setCoinBet(200)" id="coinBet200" class="glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition">₨200</button>
                         </div>
                         <h3 class="font-bold mb-2">Choose Side:</h3>
                         <div class="grid grid-cols-2 gap-3">
@@ -503,89 +484,82 @@
             </div>
         </div>
         
-        <div id="wheelPage" class="page">
+        <div id="bubblePage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow text-center">
-                    <h2 class="text-xl font-bold mb-3">🎡 Fortune Wheel</h2>
-                    <p class="text-xs mb-3" style="color:var(--txt2)">Pick a color and win with multipliers!</p>
-                    <div class="bg-purple-900/30 border border-purple-500 rounded-lg p-2 mb-4 text-xs">
-                        <span class="font-bold text-accent" id="wheelTimer">20</span>s | <span class="text-green-400" id="wheelPlayers">0 Players</span> | Pool: <span class="text-yellow-400" id="wheelPool">Rs0</span>
+                    <h2 class="text-xl font-bold mb-3">🎯 Bubble Shooter Arena</h2>
+                    <p class="text-xs mb-3" style="color:var(--txt2)">Match with opponent & shoot bubbles to win!</p>
+                    
+                    <div id="bubbleLobby">
+                        <div class="bg-purple-900/30 border border-purple-500 rounded-lg p-3 mb-4 text-sm">
+                            <div class="font-bold mb-2">🎮 2-Player Battle</div>
+                            <div class="text-xs">Winner gets their bet back! Second place gets 25%</div>
+                        </div>
+                        <h3 class="font-bold mb-3">Select Bet Amount:</h3>
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <button onclick="setBubbleBet(100)" id="bubbleBet100" class="glass border-2 border-transparent px-4 py-3 rounded-lg font-bold hover:border-accent transition">₨100</button>
+                            <button onclick="setBubbleBet(200)" id="bubbleBet200" class="glass border-2 border-transparent px-4 py-3 rounded-lg font-bold hover:border-accent transition">₨200</button>
+                            <button onclick="setBubbleBet(300)" id="bubbleBet300" class="glass border-2 border-transparent px-4 py-3 rounded-lg font-bold hover:border-accent transition">₨300</button>
+                            <button onclick="setBubbleBet(500)" id="bubbleBet500" class="glass border-2 border-transparent px-4 py-3 rounded-lg font-bold hover:border-accent transition">₨500</button>
+                        </div>
+                        <button onclick="startBubbleMatch()" id="bubbleStartBtn" class="w-full bg-gradient-to-r from-green-600 to-green-500 text-white font-bold py-4 rounded-lg shadow-lg hover:opacity-90 transition mb-3" disabled>
+                            <i class="fas fa-play mr-2"></i>START MATCH
+                        </button>
+                        <div id="bubbleMatchStatus" class="text-sm font-bold text-yellow-400"></div>
                     </div>
-                    <div class="mb-4">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/3ZEFHNFWFf84LVSjzePDxJ/1000298020-removebg-preview.png" class="w-48 h-48 mx-auto">
-                    </div>
-                    <div id="ballDrop" class="mb-4">
-                        <div class="text-sm font-bold mb-2">🎲 Ball Drop Animation</div>
-                        <div class="flex justify-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-red-600 animate-bounce" style="animation-delay:0s"></div>
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 animate-bounce" style="animation-delay:0.1s"></div>
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-green-600 animate-bounce" style="animation-delay:0.2s"></div>
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 animate-bounce" style="animation-delay:0.3s"></div>
+                    
+                    <div id="bubbleGameArea" class="hidden">
+                        <div class="bg-blue-900/30 border border-blue-500 rounded-lg p-2 mb-3 text-xs">
+                            <div class="flex justify-between mb-1">
+                                <div><span class="font-bold text-green-400">You:</span> <span id="yourScore" class="font-bold">0</span> pts</div>
+                                <div><span class="font-bold text-red-400">Opponent:</span> <span id="oppScore" class="font-bold">0</span> pts</div>
+                            </div>
+                            <div class="font-bold text-accent"><span id="bubbleTimer">60</span>s</div>
+                        </div>
+                        <div class="bubble-game-canvas mx-auto" id="bubbleCanvas">
+                            <div id="bubbleGrid"></div>
+                            <div class="shooter bubble-red" id="shooter"></div>
+                        </div>
+                        <div class="mt-3 text-sm">
+                            <div class="font-bold mb-2">Tap canvas to shoot!</div>
+                            <div class="text-xs" style="color:var(--txt2)">Match 3+ bubbles of same color to pop them</div>
                         </div>
                     </div>
-                    <h3 class="font-bold mb-2">Select Color to Bet:</h3>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="placeWheelBet('red',20)" class="bg-gradient-to-br from-red-600 to-red-500 text-white font-bold py-4 rounded-lg hover:opacity-90 transition shadow-lg">
-                            <div class="text-2xl mb-1">🔴</div>
-                            <div class="text-sm">Red</div>
-                            <div class="text-xs opacity-80">Rs20 - 1x multiplier</div>
-                        </button>
-                        <button onclick="placeWheelBet('blue',50)" class="bg-gradient-to-br from-blue-600 to-blue-500 text-white font-bold py-4 rounded-lg hover:opacity-90 transition shadow-lg">
-                            <div class="text-2xl mb-1">🔵</div>
-                            <div class="text-sm">Blue</div>
-                            <div class="text-xs opacity-80">Rs50 - 2.5x multiplier</div>
-                        </button>
-                        <button onclick="placeWheelBet('green',100)" class="bg-gradient-to-br from-green-600 to-green-500 text-white font-bold py-4 rounded-lg hover:opacity-90 transition shadow-lg">
-                            <div class="text-2xl mb-1">🟢</div>
-                            <div class="text-sm">Green</div>
-                            <div class="text-xs opacity-80">Rs100 - 4x multiplier</div>
-                        </button>
-                        <button onclick="placeWheelBet('gold',150)" class="bg-gradient-to-br from-yellow-600 to-yellow-500 text-white font-bold py-4 rounded-lg hover:opacity-90 transition shadow-lg">
-                            <div class="text-2xl mb-1">🟡</div>
-                            <div class="text-sm">Gold</div>
-                            <div class="text-xs opacity-80">Rs150 - 5.5x multiplier</div>
-                        </button>
-                    </div>
-                    <div id="wheelBetInfo" class="mt-3 text-sm font-bold"></div>
                 </div>
             </div>
         </div>
         
         <div id="jackpotPage" class="page">
             <div class="max-w-6xl mx-auto px-3 py-4 pb-20 overflow-y-auto" style="max-height:calc(100vh - 80px)">
-                <button onclick="navigate('home')" class="w-full mb-4 btn-container">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image">
-                </button>
+                <button onclick="navigate('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg mb-4 hover:opacity-90 transition shadow-lg"><i class="fas fa-home mr-2"></i>Dashboard</button>
                 <div class="glass rounded-2xl p-5 glow">
                     <div class="text-center mb-4">
-                        <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/R42brwfsoLwoZ9AVqWCyYG/1000298022-removebg-preview.png" class="w-32 h-32 mx-auto mb-2">
+                        <div class="text-6xl mb-2">🎰</div>
                     </div>
-                    <h2 class="text-xl font-bold mb-3 text-center text-yellow-300">🎰 Lucky Jackpot</h2>
+                    <h2 class="text-xl font-bold mb-3 text-center text-yellow-300">Lucky Jackpot</h2>
                     <div class="bg-yellow-900/30 border-2 border-yellow-500 rounded-xl p-3 mb-4 text-center text-sm">
                         <div class="text-xs" style="color:var(--txt2)">Next Draw: Sunday 11:00 PM</div>
                         <div class="text-2xl font-bold text-yellow-300 mt-1">10 Winners Selected!</div>
                     </div>
                     <div class="grid grid-cols-2 gap-3 mb-4">
                         <div class="glass rounded-xl p-3 text-center">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/BFCWkciCzcvNrKzH5uhpzQ/1000298056-removebg-preview.png" class="w-10 h-10 mx-auto mb-1">
+                            <div class="text-3xl mb-1">🎫</div>
                             <div class="text-xs mb-1" style="color:var(--txt2)">Your Tickets:</div>
                             <div class="text-2xl font-bold text-accent" id="jackpotTickets">0</div>
                         </div>
                         <div class="glass rounded-xl p-3 text-center">
                             <div class="text-3xl mb-1">💰</div>
                             <div class="text-xs mb-1" style="color:var(--txt2)">Prize Pool:</div>
-                            <div class="text-2xl font-bold text-green-400">Rs50,000</div>
+                            <div class="text-2xl font-bold text-green-400">₨50,000</div>
                         </div>
                     </div>
                     <div class="space-y-2">
                         <button onclick="buyJackpotTicket(50)" class="w-full bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-bold py-3 rounded-lg hover:opacity-90 transition text-sm shadow-lg">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/BFCWkciCzcvNrKzH5uhpzQ/1000298056-removebg-preview.png" class="w-5 h-5 inline mr-2">Buy 1 Ticket - Rs50
+                            🎫 Buy 1 Ticket - ₨50
                         </button>
                         <button onclick="buyJackpotTicket(200)" class="w-full bg-gradient-to-r from-green-600 to-green-500 text-white font-bold py-3 rounded-lg hover:opacity-90 transition text-sm shadow-lg">
-                            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/BFCWkciCzcvNrKzH5uhpzQ/1000298056-removebg-preview.png" class="w-5 h-5 inline mr-2">Buy 5 Tickets - Rs200
+                            🎫 Buy 5 Tickets - ₨200
                         </button>
                     </div>
                 </div>
@@ -604,7 +578,7 @@
                         </div>
                         <div class="glass rounded-xl p-4 text-center">
                             <div class="text-3xl mb-2">💰</div>
-                            <div class="text-2xl font-bold text-green-400" id="adminRevenue">Rs0</div>
+                            <div class="text-2xl font-bold text-green-400" id="adminRevenue">₨0</div>
                             <div class="text-xs" style="color:var(--txt2)">Total Revenue</div>
                         </div>
                         <div class="glass rounded-xl p-4 text-center">
@@ -633,48 +607,27 @@
     </div>
     
     <div id="modals"></div>
-    
-    <div class="chat-widget">
-        <div class="chat-box" id="chatBox">
-            <div class="chat-header">
-                <div class="flex items-center space-x-2">
-                    <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/FvZx6kn5iYtiQZQ9Byvtu4/pngtree-customer-support-operators-icon-simple-style-png-image_1873713.jpg" class="w-8 h-8 rounded-full">
-                    <span>Support Chat</span>
-                </div>
-                <button onclick="toggleChat()" class="text-white"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="chat-msg bot">👋 Hello! How can we help you today?</div>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" id="chatInput" placeholder="Type your message..." class="chat-input" onkeypress="if(event.key==='Enter')sendMessage()">
-                <button onclick="sendMessage()" class="bg-accent text-primary px-3 py-2 rounded-full font-bold"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-        <button class="chat-btn" onclick="toggleChat()">
-            <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/FvZx6kn5iYtiQZQ9Byvtu4/pngtree-customer-support-operators-icon-simple-style-png-image_1873713.jpg" class="w-full h-full rounded-full object-cover">
-        </button>
-    </div>
 
     <script>
-        let user,adminMode=false,soundEnabled=false,theme='dark',audioCtx,currentCoinBet=0,coinGameState='waiting',wheelGameState='waiting';
+        let user,adminMode=false,soundEnabled=false,theme='dark',audioCtx,currentCoinBet=0,coinGameState='waiting',coinTimer=20,coinTimerInterval,bubbleBet=0,bubbleGameState='waiting',bubbleTimer=60,bubbleTimerInterval,yourScore=0,oppScore=0,bubbles=[],shooter;
         const adminEmail='ascngghj@gmail.com',adminPass='admin@Ahmad';
         
         function getAudioContext(){if(!audioCtx)audioCtx=new AudioContext();return audioCtx}
         const sounds={
             click:()=>{if(!soundEnabled)return;const a=getAudioContext(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=800;g.gain.setValueAtTime(0.2,a.currentTime);g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.08);o.start();o.stop(a.currentTime+0.08)},
             win:()=>{if(!soundEnabled)return;const a=getAudioContext();[800,1000,1200].forEach((f,i)=>{const o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=f;g.gain.setValueAtTime(0.2,a.currentTime+i*0.06);g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+i*0.06+0.15);o.start(a.currentTime+i*0.06);o.stop(a.currentTime+i*0.06+0.15)})},
-            lose:()=>{if(!soundEnabled)return;const a=getAudioContext(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=200;g.gain.setValueAtTime(0.3,a.currentTime);g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.4);o.start();o.stop(a.currentTime+0.4)}
+            lose:()=>{if(!soundEnabled)return;const a=getAudioContext(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=200;g.gain.setValueAtTime(0.3,a.currentTime);g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.4);o.start();o.stop(a.currentTime+0.4)},
+            pop:()=>{if(!soundEnabled)return;const a=getAudioContext(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=1200;o.type='sine';g.gain.setValueAtTime(0.3,a.currentTime);g.gain.exponentialRampToValueAtTime(0.01,a.currentTime+0.1);o.start();o.stop(a.currentTime+0.1)}
         };
         
         function toggleTheme(){sounds.click();theme=theme==='dark'?'light':'dark';document.body.classList.toggle('light');localStorage.setItem('theme',theme)}
-        function toggleMusic(){soundEnabled=!soundEnabled;if(soundEnabled){notif('🔊 Sound turned ON');sounds.click()}else{notif('🔇 Sound turned OFF','error')}}
+        function toggleMusic(){soundEnabled=!soundEnabled;if(soundEnabled){notif('🔊 Sound ON');sounds.click()}else{notif('🔇 Sound OFF','error')}}
         
         window.addEventListener('load',()=>{const t=localStorage.getItem('theme')||'dark';theme=t;if(t==='light')document.body.classList.add('light');setTimeout(()=>{document.getElementById('loader').style.display='none';const s=localStorage.getItem('currentUser'),a=localStorage.getItem('adminLogged');if(a==='true'){adminMode=true;showAdminPanel()}else if(s){user=JSON.parse(s);showApp()}else document.getElementById('authPage').classList.remove('hidden')},1500)});
         
-        function showMoneyAnimation(amt,isSpend=false){const m=document.createElement('div');m.className='money-fly';m.style.left=Math.random()*(window.innerWidth-80)+40+'px';m.style.top=Math.random()*(window.innerHeight/3)+80+'px';m.style.color=isSpend?'#EF4444':'#10B981';m.textContent=(isSpend?'-':'+')+' Rs'+amt.toFixed(0);document.body.appendChild(m);setTimeout(()=>m.remove(),1500)}
+        function showMoneyAnimation(amt,isSpend=false){const m=document.createElement('div');m.className='money-fly';m.style.left=Math.random()*(window.innerWidth-80)+40+'px';m.style.top=Math.random()*(window.innerHeight/3)+80+'px';m.style.color=isSpend?'#EF4444':'#10B981';m.textContent=(isSpend?'-':'+')+' ₨'+amt.toFixed(0);document.body.appendChild(m);setTimeout(()=>m.remove(),1500)}
         
-        function navigate(page){sounds.click();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'Page').classList.add('active');if(page==='profile')loadProfile();if(page==='leaderboard')loadLeaderboard();if(page==='history')filterHistory('all');if(page==='referral')loadReferral();if(page==='jackpot')loadJackpot()}
+        function navigate(page){sounds.click();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'Page').classList.add('active');if(page==='profile')loadProfile();if(page==='leaderboard')loadLeaderboard();if(page==='history')filterHistory('all');if(page==='referral')loadReferral();if(page==='jackpot')loadJackpot();if(page==='coin')startCoinTimer();else stopCoinTimer();if(page==='bubble')resetBubbleLobby();else stopBubbleGame()}
         
         function notif(msg,type='success'){sounds.click();const n=document.createElement('div');n.className=`notif ${type==='success'?'bg-green-600':'bg-red-600'} text-white`;n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),2500)}
         
@@ -696,17 +649,17 @@
         
         function openTreasure(){const now=new Date(),last=user.lastClaim?new Date(user.lastClaim):null,days=last?Math.floor((now-last)/86400000):999;if(user.streak>=7){notif('Complete! Resets tomorrow','error');return}if(days<1){notif('Come back tomorrow!','error');return}sounds.win();const closed=document.getElementById('treasureBoxClosed'),open=document.getElementById('treasureBoxOpen');closed.classList.add('opening');setTimeout(()=>{closed.classList.add('hidden');open.classList.remove('hidden');open.style.animation='treasureOpen 1s ease-out';setTimeout(()=>showRewardCard(),1200)},400)}
         
-        function showRewardCard(){const rewards=[2.14,2.14,2.14,2.14,2.14,2.14,2.16],day=user.streak+1,reward=rewards[day-1],modal=document.createElement('div');modal.className='reward-card-modal';modal.innerHTML=`<div class="reward-card"><div class="reward-card-content"><div class="reward-day">DAY ${day}</div><div class="reward-amount">Rs${reward.toFixed(2)}</div><button class="claim-btn" onclick="claimReward(${reward})">CLAIM</button></div></div>`;document.body.appendChild(modal)}
+        function showRewardCard(){const rewards=[2.14,2.14,2.14,2.14,2.14,2.14,2.16],day=user.streak+1,reward=rewards[day-1],modal=document.createElement('div');modal.className='reward-card-modal';modal.innerHTML=`<div class="reward-card"><div class="reward-card-content"><div class="reward-day">DAY ${day}</div><div class="reward-amount">₨${reward.toFixed(2)}</div><button class="claim-btn" onclick="claimReward(${reward})">CLAIM</button></div></div>`;document.body.appendChild(modal)}
         
-        function claimReward(reward){sounds.win();user.balance+=reward;user.totalEarnings+=reward;user.streak++;user.lastClaim=new Date().toISOString();const modal=document.querySelector('.reward-card-modal');modal.style.animation='modalFadeIn 0.5s reverse';setTimeout(()=>{modal.remove();showMoneyAnimation(reward);updateUI();updateTreasure();notif(`Day ${user.streak} claimed! +Rs${reward.toFixed(2)}`);const closed=document.getElementById('treasureBoxClosed'),open=document.getElementById('treasureBoxOpen');setTimeout(()=>{open.classList.add('hidden');open.classList.remove('opening');open.style.animation='';closed.classList.remove('hidden','opening')},800)},400)}
+        function claimReward(reward){sounds.win();user.balance+=reward;user.totalEarnings+=reward;user.streak++;user.lastClaim=new Date().toISOString();const modal=document.querySelector('.reward-card-modal');modal.style.animation='modalFadeIn 0.5s reverse';setTimeout(()=>{modal.remove();showMoneyAnimation(reward);updateUI();updateTreasure();notif(`Day ${user.streak} claimed! +₨${reward.toFixed(2)}`);const closed=document.getElementById('treasureBoxClosed'),open=document.getElementById('treasureBoxOpen');setTimeout(()=>{open.classList.add('hidden');open.classList.remove('opening');open.style.animation='';closed.classList.remove('hidden','opening')},800)},400)}
         
         function loadProfile(){document.getElementById('profileAvatar').src=user.profile?.picture||`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=F59E0B&color=1E40AF&size=256`;document.getElementById('profileNickname').value=user.profile?.nickname||user.name;document.getElementById('profileBio').value=user.profile?.bio||'';document.getElementById('profileDob').value=user.profile?.dob||'';document.getElementById('avatarInput').onchange=e=>{const f=e.target.files[0];if(f){const r=new FileReader();r.onload=ev=>{user.profile.picture=ev.target.result;updateUI();loadProfile();notif('Photo updated!')};r.readAsDataURL(f)}}}
         function saveProfile(){user.profile.nickname=document.getElementById('profileNickname').value||user.name;user.profile.bio=document.getElementById('profileBio').value;user.profile.dob=document.getElementById('profileDob').value;saveUser();updateUI();notif('Profile saved!');sounds.win()}
         function changePassword(){const n=prompt('Enter new password (min 6 chars):');if(n&&n.length>=6){user.password=n;saveUser();notif('Password changed!');sounds.win()}else notif('Invalid!','error')}
         function deleteAccount(){if(confirm('Delete account permanently?')){const users=JSON.parse(localStorage.getItem('users')||'[]'),i=users.findIndex(u=>u.id===user.id);if(i!==-1){users.splice(i,1);localStorage.setItem('users',JSON.stringify(users))}localStorage.removeItem('currentUser');notif('Deleted!','error');setTimeout(()=>location.reload(),1000)}}
-        function loadLeaderboard(){const users=JSON.parse(localStorage.getItem('users')||'[]').filter(u=>!u.banned).sort((a,b)=>b.totalEarnings-a.totalEarnings),list=document.getElementById('leaderboardList'),badges={'BRONZE':'🔰','SILVER':'⚜️','GOLD':'👑','PLATINUM':'💎','DIAMOND':'🌟'};list.innerHTML=users.map((u,i)=>{const r=getRank(u.totalEarnings),medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':`#${i+1}`;return`<div class="glass rounded-xl p-3 flex items-center justify-between hover:bg-white/5 transition"><div class="flex items-center space-x-3"><div class="text-2xl font-bold">${medal}</div><div><div class="font-bold text-sm">${u.profile?.nickname||u.name}</div><div class="rank-${r.tier.toLowerCase()} px-2 py-0.5 rounded-full text-xs font-bold inline-block">${badges[r.tier]}</div></div></div><div class="text-right"><div class="text-lg font-bold text-green-400">Rs${u.totalEarnings.toFixed(0)}</div></div></div>`}).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No users yet</div>'}
-        function filterHistory(type){sounds.click();['all','deposit','withdraw','game'].forEach(t=>document.getElementById('filter'+t.charAt(0).toUpperCase()+t.slice(1)).className='px-4 py-2 rounded-lg glass text-xs');document.getElementById('filter'+type.charAt(0).toUpperCase()+type.slice(1)).className='px-4 py-2 rounded-lg bg-accent text-primary font-bold text-xs';const history=user.history||[],filtered=type==='all'?history:history.filter(h=>h.type===type),list=document.getElementById('historyList');list.innerHTML=filtered.reverse().map(h=>`<div class="glass rounded-xl p-3 flex justify-between items-center"><div><div class="font-bold text-xs">${h.type.toUpperCase()}</div><div class="text-xs" style="color:var(--txt2)">${new Date(h.date).toLocaleString()}</div></div><div class="text-right"><div class="font-bold text-base ${h.amount>=0?'text-green-400':'text-red-400'}">${h.amount>=0?'+':''}Rs${Math.abs(h.amount).toFixed(0)}</div><div class="text-xs ${h.status==='completed'?'text-green-400':'text-yellow-400'}">${h.status}</div></div></div>`).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No transactions</div>'}
-        function loadReferral(){document.getElementById('refCode').textContent=user.referralCode;document.getElementById('refCount').textContent=user.referrals?.length||0;document.getElementById('refEarnings').textContent='Rs'+(user.referralEarnings||0).toFixed(0);const qr=document.getElementById('qrCode');qr.innerHTML=`<div class="w-40 h-40 mx-auto bg-white p-3 rounded-xl"><img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${user.referralCode}" class="w-full h-full"></div>`}
+        function loadLeaderboard(){const users=JSON.parse(localStorage.getItem('users')||'[]').filter(u=>!u.banned).sort((a,b)=>b.totalEarnings-a.totalEarnings),list=document.getElementById('leaderboardList'),badges={'BRONZE':'🔰','SILVER':'⚜️','GOLD':'👑','PLATINUM':'💎','DIAMOND':'🌟'};list.innerHTML=users.map((u,i)=>{const r=getRank(u.totalEarnings),medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':`#${i+1}`;return`<div class="glass rounded-xl p-3 flex items-center justify-between hover:bg-white/5 transition"><div class="flex items-center space-x-3"><div class="text-2xl font-bold">${medal}</div><div><div class="font-bold text-sm">${u.profile?.nickname||u.name}</div><div class="rank-${r.tier.toLowerCase()} px-2 py-0.5 rounded-full text-xs font-bold inline-block">${badges[r.tier]}</div></div></div><div class="text-right"><div class="text-lg font-bold text-green-400">₨${u.totalEarnings.toFixed(0)}</div></div></div>`}).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No users yet</div>'}
+        function filterHistory(type){sounds.click();['all','deposit','withdraw','game'].forEach(t=>document.getElementById('filter'+t.charAt(0).toUpperCase()+t.slice(1)).className='px-4 py-2 rounded-lg glass text-xs');document.getElementById('filter'+type.charAt(0).toUpperCase()+type.slice(1)).className='px-4 py-2 rounded-lg bg-accent text-primary font-bold text-xs';const history=user.history||[],filtered=type==='all'?history:history.filter(h=>h.type===type),list=document.getElementById('historyList');list.innerHTML=filtered.reverse().map(h=>`<div class="glass rounded-xl p-3 flex justify-between items-center"><div><div class="font-bold text-xs">${h.type.toUpperCase()}</div><div class="text-xs" style="color:var(--txt2)">${new Date(h.date).toLocaleString()}</div></div><div class="text-right"><div class="font-bold text-base ${h.amount>=0?'text-green-400':'text-red-400'}">${h.amount>=0?'+':''}₨${Math.abs(h.amount).toFixed(0)}</div><div class="text-xs ${h.status==='completed'?'text-green-400':'text-yellow-400'}">${h.status}</div></div></div>`).join('')||'<div class="text-center py-6 text-sm" style="color:var(--txt2)">No transactions</div>'}
+        function loadReferral(){document.getElementById('refCode').textContent=user.referralCode;document.getElementById('refCount').textContent=user.referrals?.length||0;document.getElementById('refEarnings').textContent='₨'+(user.referralEarnings||0).toFixed(0);const qr=document.getElementById('qrCode');qr.innerHTML=`<div class="w-40 h-40 mx-auto bg-white p-3 rounded-xl"><img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${user.referralCode}" class="w-full h-full"></div>`}
         function copyRefCode(){navigator.clipboard.writeText(user.referralCode);notif('Code copied!');sounds.win()}
         function shareWhatsApp(){window.open(`https://wa.me/?text=Join MeraPasia! Code: ${user.referralCode}`,'_blank')}
         function shareFacebook(){window.open(`https://www.facebook.com/sharer/sharer.php?u=https://merapasia.com&quote=Code ${user.referralCode}`,'_blank')}
@@ -715,26 +668,44 @@
         function loadJackpot(){document.getElementById('jackpotTickets').textContent=user.jackpotTickets||0}
         function buyJackpotTicket(amt){const tickets=amt===50?1:5;if(user.balance<amt){notif('Insufficient balance!','error');sounds.lose();return}user.balance-=amt;showMoneyAnimation(amt,true);user.jackpotTickets=(user.jackpotTickets||0)+tickets;if(!user.history)user.history=[];user.history.push({type:'game',amount:-amt,date:Date.now(),status:'completed',desc:`${tickets} ticket(s)`});saveUser();updateUI();loadJackpot();notif(`Purchased ${tickets} ticket(s)!`);sounds.win()}
         
-        function setCoinBet(amt){sounds.click();currentCoinBet=amt;['20','40','60','80','150','200'].forEach(a=>document.getElementById('coinBet'+a).className='glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition');document.getElementById('coinBet'+amt).className='glass px-3 py-2 rounded-lg font-bold text-sm border-2 border-accent transition';document.getElementById('coinBetInfo').innerHTML=`<span class="text-accent">Selected Bet: Rs${amt}</span> - Choose HEAD or TAIL`;notif(`Bet amount set: Rs${amt}`)}
+        function startCoinTimer(){coinTimer=20;coinGameState='waiting';updateCoinDisplay();if(coinTimerInterval)clearInterval(coinTimerInterval);coinTimerInterval=setInterval(()=>{coinTimer--;updateCoinDisplay();if(coinTimer<=3&&soundEnabled)sounds.click();if(coinTimer<=0){coinTimer=20}},1000)}
+        function stopCoinTimer(){if(coinTimerInterval)clearInterval(coinTimerInterval)}
+        function updateCoinDisplay(){document.getElementById('coinTimer').textContent=coinTimer;document.getElementById('coinPlayers').textContent=Math.floor(Math.random()*15)+5+' Players';document.getElementById('coinPool').textContent='₨'+(Math.floor(Math.random()*5000)+1000)}
         
-        function placeCoinBet(side){if(!currentCoinBet){notif('Select bet amount first!','error');return}if(user.balance<currentCoinBet){notif('Insufficient balance!','error');sounds.lose();return}if(coinGameState==='playing'){notif('Game in progress!','error');return}sounds.win();user.balance-=currentCoinBet;showMoneyAnimation(currentCoinBet,true);if(!user.history)user.history=[];user.history.push({type:'game',amount:-currentCoinBet,date:Date.now(),status:'completed',desc:'Coin flip bet'});coinGameState='playing';const coin=document.getElementById('coin3d');coin.classList.add('spinning');setTimeout(()=>{const result=Math.random()<0.5?'head':'tail';const won=result===side;coin.classList.remove('spinning');if(won){const winAmount=currentCoinBet*1.7;user.balance+=winAmount;user.totalEarnings+=winAmount-currentCoinBet;showMoneyAnimation(winAmount);notif(`🎉 You Won! +Rs${winAmount.toFixed(0)}`);sounds.win();user.history.push({type:'game',amount:winAmount,date:Date.now(),status:'completed',desc:`Coin flip win - ${side.toUpperCase()}`})}else{notif(`😢 Lost! Result: ${result.toUpperCase()}`,'error');sounds.lose()}saveUser();updateUI();coinGameState='waiting';currentCoinBet=0;['20','40','60','80','150','200'].forEach(a=>document.getElementById('coinBet'+a).className='glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition');document.getElementById('coinBetInfo').innerHTML=''},3000)}
+        function setCoinBet(amt){sounds.click();currentCoinBet=amt;['20','40','60','80','150','200'].forEach(a=>document.getElementById('coinBet'+a).className='glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition');document.getElementById('coinBet'+amt).className='glass px-3 py-2 rounded-lg font-bold text-sm border-2 border-accent transition';document.getElementById('coinBetInfo').innerHTML=`<span class="text-accent">Selected Bet: ₨${amt}</span> - Choose HEAD or TAIL`;notif(`Bet amount set: ₨${amt}`)}
         
-        function placeWheelBet(color,price){if(user.balance<price){notif('Insufficient balance!','error');sounds.lose();return}if(wheelGameState==='playing'){notif('Game in progress!','error');return}sounds.win();user.balance-=price;showMoneyAnimation(price,true);if(!user.history)user.history=[];user.history.push({type:'game',amount:-price,date:Date.now(),status:'completed',desc:`Wheel bet - ${color}`});wheelGameState='playing';const multipliers={red:1,blue:2.5,green:4,gold:5.5};setTimeout(()=>{const colors=['red','blue','green','gold'];const result=colors[Math.floor(Math.random()*colors.length)];const won=result===color;if(won){const mult=multipliers[color];const winAmount=price*mult;user.balance+=winAmount;user.totalEarnings+=winAmount-price;showMoneyAnimation(winAmount);notif(`🎉 Won ${color.toUpperCase()}! +Rs${winAmount.toFixed(0)} (${mult}x)`);sounds.win();user.history.push({type:'game',amount:winAmount,date:Date.now(),status:'completed',desc:`Wheel win - ${color}`})}else{notif(`Result: ${result.toUpperCase()} - Better luck!`,'error');sounds.lose()}saveUser();updateUI();wheelGameState='waiting'},2500)}
+        function placeCoinBet(side){if(!currentCoinBet){notif('Select bet amount first!','error');return}if(user.balance<currentCoinBet){notif('Insufficient balance!','error');sounds.lose();return}if(coinGameState==='playing'){notif('Game in progress!','error');return}sounds.win();user.balance-=currentCoinBet;showMoneyAnimation(currentCoinBet,true);if(!user.history)user.history=[];user.history.push({type:'game',amount:-currentCoinBet,date:Date.now(),status:'completed',desc:'Coin flip bet'});coinGameState='playing';const coin=document.getElementById('coin3d');coin.classList.add('spinning');setTimeout(()=>{const result=Math.random()<0.5?'head':'tail';const won=result===side;coin.classList.remove('spinning');if(won){const winAmount=currentCoinBet*1.7;user.balance+=winAmount;user.totalEarnings+=winAmount-currentCoinBet;showMoneyAnimation(winAmount);notif(`🎉 You Won! +₨${winAmount.toFixed(0)}`);sounds.win();user.history.push({type:'game',amount:winAmount,date:Date.now(),status:'completed',desc:`Coin flip win - ${side.toUpperCase()}`})}else{notif(`😢 Lost! Result: ${result.toUpperCase()}`,'error');sounds.lose()}saveUser();updateUI();coinGameState='waiting';currentCoinBet=0;['20','40','60','80','150','200'].forEach(a=>document.getElementById('coinBet'+a).className='glass px-3 py-2 rounded-lg font-bold text-sm hover:bg-accent/20 border-2 border-transparent transition');document.getElementById('coinBetInfo').innerHTML=''},3000)}
         
-        function toggleChat(){sounds.click();document.getElementById('chatBox').classList.toggle('active')}
-        function sendMessage(){const input=document.getElementById('chatInput'),msg=input.value.trim();if(!msg)return;const msgs=document.getElementById('chatMessages');msgs.innerHTML+=`<div class="chat-msg user">${msg}</div>`;input.value='';msgs.scrollTop=msgs.scrollHeight;sounds.click();setTimeout(()=>{const replies=['Our support team will assist you shortly!','Thank you for contacting us. How can we help?','Please describe your issue in detail.','We are here to help! 😊'];msgs.innerHTML+=`<div class="chat-msg bot">${replies[Math.floor(Math.random()*replies.length)]}</div>`;msgs.scrollTop=msgs.scrollHeight},1000)}
+        function setBubbleBet(amt){sounds.click();bubbleBet=amt;['100','200','300','500'].forEach(a=>document.getElementById('bubbleBet'+a).className='glass border-2 border-transparent px-4 py-3 rounded-lg font-bold hover:border-accent transition');document.getElementById('bubbleBet'+amt).className='glass border-2 border-accent px-4 py-3 rounded-lg font-bold transition';document.getElementById('bubbleStartBtn').disabled=false;document.getElementById('bubbleMatchStatus').innerHTML=`<span class="text-green-400">✓ Bet selected: ₨${amt}</span>`;notif(`Bet selected: ₨${amt}`)}
         
-        function showMenu(){sounds.click();const m=`<div id="menuModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-6 w-full max-w-md my-6 max-h-[90vh] overflow-y-auto"><div class="mb-5"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/TcyPgRTGf3iTtfjpNSQgrw/1000298083-removebg-preview.png" class="h-16 mx-auto object-contain"></div><div class="grid grid-cols-2 gap-2 mb-4 pb-4 border-b border-accent/20"><button onclick="toggleTheme();document.getElementById('menuModal').querySelector('#menuThemeBtn').innerHTML=theme==='dark'?'<i class=\\'fas fa-moon text-accent text-lg mb-0.5\\'></i><div class=\\'text-xs\\'>Dark</div>':'<i class=\\'fas fa-sun text-yellow-400 text-lg mb-0.5\\'></i><div class=\\'text-xs\\'>Light</div>'" id="menuThemeBtn" class="glass px-3 py-2 rounded-lg hover:bg-accent/20 transition text-center"><i class="fas fa-moon text-accent text-lg mb-0.5"></i><div class="text-xs">Dark</div></button><button onclick="toggleMusic();const btn=document.getElementById('menuModal').querySelector('#menuMusicBtn');btn.innerHTML=soundEnabled?'<i class=\\'fas fa-volume-up text-green-400 text-lg mb-0.5\\'></i><div class=\\'text-xs font-bold\\'>Sound ON</div>':'<i class=\\'fas fa-volume-mute text-red-400 text-lg mb-0.5\\'></i><div class=\\'text-xs font-bold\\'>Sound OFF</div>';btn.className=soundEnabled?'glass px-3 py-2 rounded-lg transition text-center border-2 border-green-500 bg-green-500/20':'glass px-3 py-2 rounded-lg transition text-center border-2 border-red-500 bg-red-500/20'" id="menuMusicBtn" class="glass px-3 py-2 rounded-lg transition text-center border-2 border-red-500 bg-red-500/20"><i class="fas fa-volume-mute text-red-400 text-lg mb-0.5"></i><div class="text-xs font-bold">Sound OFF</div></button></div><div class="space-y-3"><button onclick="navigate('home');document.getElementById('menuModal').remove()" class="w-full btn-container"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/VmZ9a73WFJY6BByvVoUvr7/1000298071-removebg-preview.png" class="btn-image"></button><button onclick="navigate('profile');document.getElementById('menuModal').remove()" class="w-full btn-container"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/R4eYM7uqGJWALLgg54uwLo/1000298074-removebg-preview.png" class="btn-image"></button><button onclick="navigate('deposit');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/KKfDK7MnhxNcknxrVP2Ee5/1000298018-removebg-preview.png" class="w-10 h-10 mr-3 object-contain">Deposit</button><button onclick="navigate('withdraw');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/KpJkB3HNEqhgoRjRSbaweP/1000298019-removebg-preview.png" class="w-10 h-10 mr-3 object-contain">Withdraw</button><button onclick="navigate('history');document.getElementById('menuModal').remove()" class="w-full btn-container"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/RqzB3JcxF6DVnxt4HyTmZP/1000298073-removebg-preview.png" class="btn-image"></button><button onclick="navigate('referral');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/HTud9YkTB9XVaa8T4JcbmK/1000298050-removebg-preview~2.png" class="w-10 h-10 mr-3 object-contain">Referrals</button><button onclick="navigate('leaderboard');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/3GQM2iTHacrJBreUm3VJFs/1000298141-removebg-preview.png" class="w-10 h-10 mr-3 object-contain">Champions</button><button onclick="navigate('coin');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/hyJ8TnHHGWjLBka43QjBdR/1000298021-removebg-preview.png" class="w-10 h-10 mr-3 object-contain">Coin Master</button><button onclick="navigate('wheel');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/3ZEFHNFWFf84LVSjzePDxJ/1000298020-removebg-preview.png" class="w-10 h-10 mr-3 object-contain">Fortune Wheel</button><button onclick="navigate('jackpot');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/R42brwfsoLwoZ9AVqWCyYG/1000298022-removebg-preview.png" class="w-10 h-10 mr-3 object-contain">Jackpot</button><button onclick="toggleChat();document.getElementById('menuModal').remove()" class="w-full glass px-4 py-2.5 rounded-lg hover:bg-accent/20 flex items-center font-semibold transition text-sm"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/FvZx6kn5iYtiQZQ9Byvtu4/pngtree-customer-support-operators-icon-simple-style-png-image_1873713.jpg" class="w-10 h-10 mr-3 object-contain rounded-full">Contact Support</button><button onclick="showTerms();document.getElementById('menuModal').remove()" class="w-full btn-container"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/2JK368v6yRedFVA2xMBcy4/1000298075-removebg-preview.png" class="btn-image"></button><button onclick="handleLogout()" class="w-full btn-container"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/5nFnWo3nF62vrhX4DKvbqc/1000298076-removebg-preview.png" class="btn-image"></button><button onclick="document.getElementById('menuModal').remove()" class="w-full btn-container mt-3"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/ZjZYhk6a4HNG5VZ6DewfH8/1000298077-removebg-preview.png" class="btn-image"></button></div></div></div>`;document.getElementById('modals').innerHTML=m;const btn=document.getElementById('menuThemeBtn');btn.innerHTML=theme==='dark'?'<i class="fas fa-moon text-accent text-lg mb-0.5"></i><div class="text-xs">Dark</div>':'<i class="fas fa-sun text-yellow-400 text-lg mb-0.5"></i><div class="text-xs">Light</div>';const mbtn=document.getElementById('menuMusicBtn');mbtn.innerHTML=soundEnabled?'<i class="fas fa-volume-up text-green-400 text-lg mb-0.5"></i><div class="text-xs font-bold">Sound ON</div>':'<i class="fas fa-volume-mute text-red-400 text-lg mb-0.5"></i><div class="text-xs font-bold">Sound OFF</div>';mbtn.className=soundEnabled?'glass px-3 py-2 rounded-lg transition text-center border-2 border-green-500 bg-green-500/20':'glass px-3 py-2 rounded-lg transition text-center border-2 border-red-500 bg-red-500/20'}
+        function startBubbleMatch(){if(!bubbleBet){notif('Select bet amount!','error');return}if(user.balance<bubbleBet){notif('Insufficient balance!','error');sounds.lose();return}sounds.win();user.balance-=bubbleBet;showMoneyAnimation(bubbleBet,true);if(!user.history)user.history=[];user.history.push({type:'game',amount:-bubbleBet,date:Date.now(),status:'completed',desc:'Bubble shooter bet'});saveUser();updateUI();document.getElementById('bubbleLobby').classList.add('hidden');document.getElementById('bubbleGameArea').classList.remove('hidden');initBubbleGame()}
+        
+        function initBubbleGame(){bubbleTimer=60;yourScore=0;oppScore=0;document.getElementById('yourScore').textContent=0;document.getElementById('oppScore').textContent=0;updateBubbleTimer();bubbleTimerInterval=setInterval(()=>{bubbleTimer--;updateBubbleTimer();oppScore+=Math.floor(Math.random()*15)+5;document.getElementById('oppScore').textContent=oppScore;if(bubbleTimer<=3&&soundEnabled)sounds.click();if(bubbleTimer<=0){endBubbleGame()}},1000);const canvas=document.getElementById('bubbleCanvas');const grid=document.getElementById('bubbleGrid');grid.innerHTML='';const colors=['bubble-red','bubble-blue','bubble-green','bubble-yellow','bubble-purple'];for(let i=0;i<40;i++){const bubble=document.createElement('div');bubble.className='bubble '+colors[Math.floor(Math.random()*colors.length)];bubble.style.left=(i%8)*50+'px';bubble.style.top=Math.floor(i/8)*50+'px';grid.appendChild(bubble);bubbles.push(bubble)}shooter=document.getElementById('shooter');const shooterColors=['bubble-red','bubble-blue','bubble-green','bubble-yellow','bubble-purple'];shooter.className='shooter '+shooterColors[Math.floor(Math.random()*shooterColors.length)];canvas.addEventListener('click',shootBubble)}
+        
+        function shootBubble(e){if(bubbleGameState==='ended')return;sounds.pop();const pts=Math.floor(Math.random()*25)+10;yourScore+=pts;document.getElementById('yourScore').textContent=yourScore;showMoneyAnimation(pts);const colors=['bubble-red','bubble-blue','bubble-green','bubble-yellow','bubble-purple'];shooter.className='shooter '+colors[Math.floor(Math.random()*colors.length)]}
+        
+        function updateBubbleTimer(){document.getElementById('bubbleTimer').textContent=bubbleTimer}
+        
+        function endBubbleGame(){bubbleGameState='ended';clearInterval(bubbleTimerInterval);const won=yourScore>oppScore;const place=won?1:2;let winAmount=0;if(place===1){winAmount=bubbleBet*0.7}else{winAmount=bubbleBet*0.25}user.balance+=winAmount;user.totalEarnings+=won?(winAmount-bubbleBet):0;if(won){notif(`🎉 1st Place! You won ₨${winAmount.toFixed(0)}!`);sounds.win()}else{notif(`🥈 2nd Place! You got ₨${winAmount.toFixed(0)}`);sounds.lose()}user.history.push({type:'game',amount:winAmount,date:Date.now(),status:'completed',desc:`Bubble shooter ${won?'win':'2nd place'}`});saveUser();updateUI();setTimeout(resetBubbleLobby,3000)}
+        
+        function resetBubbleLobby(){bubbleGameState='waiting';bubbleBet=0;bubbles=[];document.getElementById('bubbleLobby').classList.remove('hidden');document.getElementById('bubbleGameArea').classList.add('hidden');['100','200','300','500'].forEach(a=>document.getElementById('bubbleBet'+a).className='glass border-2 border-transparent px-4 py-3 rounded-lg font-bold hover:border-accent transition');document.getElementById('bubbleStartBtn').disabled=true;document.getElementById('bubbleMatchStatus').innerHTML='';document.getElementById('bubbleGrid').innerHTML=''}
+        
+        function stopBubbleGame(){if(bubbleTimerInterval)clearInterval(bubbleTimerInterval);bubbleGameState='waiting'}
+        
+        function showMenu(){sounds.click();const m=`<div id="menuModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-6 w-full max-w-md my-6 max-h-[90vh] overflow-y-auto"><h2 class="text-2xl font-bold mb-5 text-center text-accent"><i class="fas fa-bars mr-2"></i>Menu</h2><div class="grid grid-cols-2 gap-2 mb-4 pb-4 border-b border-accent/20"><button onclick="toggleTheme();updateMenuTheme()" id="menuThemeBtn" class="glass px-3 py-3 rounded-lg hover:bg-accent/20 transition text-center font-semibold"><i class="fas fa-moon text-accent text-lg mb-1"></i><div class="text-xs">Dark Mode</div></button><button onclick="toggleMusic();updateMenuMusic()" id="menuMusicBtn" class="glass px-3 py-3 rounded-lg transition text-center font-semibold border-2 border-red-500 bg-red-500/20"><i class="fas fa-volume-mute text-red-400 text-lg mb-1"></i><div class="text-xs font-bold">Sound OFF</div></button></div><div class="space-y-2"><button onclick="navigate('home');document.getElementById('menuModal').remove()" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg hover:opacity-90 font-semibold transition"><i class="fas fa-home mr-2"></i>Dashboard</button><button onclick="navigate('profile');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-user-circle mr-2 text-accent"></i>My Profile</button><button onclick="navigate('deposit');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-wallet mr-2 text-green-400"></i>Deposit</button><button onclick="navigate('withdraw');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-hand-holding-usd mr-2 text-yellow-400"></i>Withdraw</button><button onclick="navigate('history');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-history mr-2 text-blue-400"></i>History</button><button onclick="navigate('referral');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-users mr-2 text-purple-400"></i>Referrals</button><button onclick="navigate('leaderboard');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-trophy mr-2 text-yellow-300"></i>Champions</button><button onclick="navigate('coin');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-coins mr-2 text-yellow-400"></i>Coin Master</button><button onclick="navigate('bubble');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-bullseye mr-2 text-pink-400"></i>Bubble Shooter</button><button onclick="navigate('jackpot');document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-gift mr-2 text-purple-300"></i>Jackpot</button><button onclick="showTerms();document.getElementById('menuModal').remove()" class="w-full glass px-4 py-3 rounded-lg hover:bg-accent/20 font-semibold transition"><i class="fas fa-file-contract mr-2 text-cyan-400"></i>Terms & Conditions</button><button onclick="handleLogout()" class="w-full bg-red-600 text-white px-4 py-3 rounded-lg hover:bg-red-700 font-semibold transition"><i class="fas fa-sign-out-alt mr-2"></i>Logout</button><button onclick="document.getElementById('menuModal').remove()" class="w-full bg-gray-600 text-white px-4 py-3 rounded-lg hover:bg-gray-700 font-semibold transition mt-3"><i class="fas fa-times mr-2"></i>Close</button></div></div></div>`;document.getElementById('modals').innerHTML=m;updateMenuTheme();updateMenuMusic()}
+        function updateMenuTheme(){const btn=document.getElementById('menuThemeBtn');if(btn)btn.innerHTML=theme==='dark'?'<i class="fas fa-moon text-accent text-lg mb-1"></i><div class="text-xs">Dark Mode</div>':'<i class="fas fa-sun text-yellow-400 text-lg mb-1"></i><div class="text-xs">Light Mode</div>'}
+        function updateMenuMusic(){const btn=document.getElementById('menuMusicBtn');if(btn){btn.innerHTML=soundEnabled?'<i class="fas fa-volume-up text-green-400 text-lg mb-1"></i><div class="text-xs font-bold">Sound ON</div>':'<i class="fas fa-volume-mute text-red-400 text-lg mb-1"></i><div class="text-xs font-bold">Sound OFF</div>';btn.className=soundEnabled?'glass px-3 py-3 rounded-lg transition text-center font-semibold border-2 border-green-500 bg-green-500/20':'glass px-3 py-3 rounded-lg transition text-center font-semibold border-2 border-red-500 bg-red-500/20'}}
         function handleLogout(){sounds.click();if(confirm('Logout?')){localStorage.removeItem('currentUser');location.reload()}}
         function selectPayment(method){sounds.click();['bank','easypaisa','jazzcash'].forEach(m=>document.getElementById('pay'+m.charAt(0).toUpperCase()+m.slice(1)).className='glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition');document.getElementById('pay'+method.charAt(0).toUpperCase()+method.slice(1)).className='glass border-2 border-accent p-3 rounded-xl transition';document.getElementById('depositForm').classList.remove('hidden');document.getElementById('adminPaymentInfo').innerHTML=`<p class="font-bold text-xs">${method.toUpperCase()}</p><p class="text-xs">Account: Admin</p><p class="text-xs">Number: 03XX-XXXXXXX</p>`}
-        function submitDeposit(){const amt=parseFloat(document.getElementById('depositAmount').value);if(!amt||amt<300||amt>20000){notif('Amount: Rs300-Rs20,000','error');return}notif('Deposit submitted! Pending...');sounds.win();navigate('home')}
+        function submitDeposit(){const amt=parseFloat(document.getElementById('depositAmount').value);if(!amt||amt<300||amt>20000){notif('Amount: ₨300-₨20,000','error');return}notif('Deposit submitted! Pending...');sounds.win();navigate('home')}
         function selectWithdrawPayment(method){sounds.click();['bank','easypaisa','jazzcash'].forEach(m=>document.getElementById('wd'+m.charAt(0).toUpperCase()+m.slice(1)).className='glass border-2 border-transparent p-3 rounded-xl hover:border-accent transition');document.getElementById('wd'+method.charAt(0).toUpperCase()+method.slice(1)).className='glass border-2 border-accent p-3 rounded-xl transition';document.getElementById('withdrawForm').classList.remove('hidden')}
-        function submitWithdraw(){const amt=parseFloat(document.getElementById('withdrawAmount').value);if(!amt||amt<1000){notif('Min Rs1,000','error');return}if(user.balance<amt){notif('Insufficient balance!','error');return}notif('Withdrawal submitted!');sounds.win();navigate('home')}
-        function showTerms(e){if(e)e.stopPropagation();const m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-6 w-full max-w-2xl my-6"><div class="mb-4"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/2JK368v6yRedFVA2xMBcy4/1000298075-removebg-preview.png" class="btn-image mx-auto"></div><div class="space-y-3 text-xs overflow-y-auto" style="max-height:55vh;color:var(--txt2)"><p><strong>1. Eligibility:</strong> 18+ years only</p><p><strong>2. Deposits:</strong> Rs300-Rs20,000, 5 transactions/day maximum</p><p><strong>3. Withdrawals:</strong> Min Rs1,000. Processing available Monday-Thursday & Saturday only (OFF on Friday & Sunday). Processing time: 24-72 hours</p><p><strong>4. Referrals:</strong> 10% commission on first withdrawal of referred users</p><p><strong>5. Games:</strong> Random outcomes, platform revenue applies</p><p><strong>6. Fair Play:</strong> Cheating = permanent ban</p><p><strong>7. Liability:</strong> Not liable for losses</p><p class="text-accent font-bold mt-4">By using MeraPasia, you agree to these terms.</p></div><button onclick="document.getElementById('modals').innerHTML=''" class="w-full btn-container mt-4"><img src="https://cdn-ai.onspace.ai/onspace/project/uploads/ZjZYhk6a4HNG5VZ6DewfH8/1000298077-removebg-preview.png" class="btn-image"></button></div></div>`;document.getElementById('modals').innerHTML=m;sounds.click()}
+        function calculateWithdrawFee(){const amt=parseFloat(document.getElementById('withdrawAmount').value)||0;if(amt>=1000){const fee=amt*0.03;const net=amt-fee;document.getElementById('withdrawAmtDisplay').textContent='₨'+amt.toFixed(0);document.getElementById('withdrawFeeDisplay').textContent='₨'+fee.toFixed(0);document.getElementById('withdrawNetDisplay').textContent='₨'+net.toFixed(0);document.getElementById('withdrawFeeInfo').classList.remove('hidden')}else{document.getElementById('withdrawFeeInfo').classList.add('hidden')}}
+        function submitWithdraw(){const amt=parseFloat(document.getElementById('withdrawAmount').value);if(!amt||amt<1000){notif('Min ₨1,000','error');return}if(user.balance<amt){notif('Insufficient balance!','error');return}const fee=amt*0.03;const net=amt-fee;user.balance-=amt;saveUser();updateUI();notif(`Withdrawal submitted! You'll receive ₨${net.toFixed(0)} (₨${fee.toFixed(0)} fee)`);sounds.win();navigate('home')}
+        function showTerms(e){if(e)e.stopPropagation();const m=`<div class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 overflow-y-auto"><div class="glass rounded-2xl p-6 w-full max-w-2xl my-6"><h2 class="text-2xl font-bold mb-4 text-center text-accent"><i class="fas fa-file-contract mr-2"></i>Terms & Conditions</h2><div class="space-y-3 text-xs overflow-y-auto" style="max-height:55vh;color:var(--txt2)"><p><strong>1. Eligibility:</strong> 18+ years only</p><p><strong>2. Deposits:</strong> Min ₨300, Max ₨20,000, 5 transactions/day maximum. Bonus ₨10 on deposits ₨300+</p><p><strong>3. Withdrawals:</strong> Min ₨1,000. 3% withdrawal fee applied. Processing Monday-Thursday & Saturday only (OFF Friday & Sunday). Processing time: 24-72 hours</p><p><strong>4. Referrals:</strong> 10% commission on first withdrawal of referred users</p><p><strong>5. Games:</strong> Random outcomes. Coin Master: 1.7x payout. Bubble Shooter: Winner 70%, 2nd place 25%</p><p><strong>6. Fair Play:</strong> Cheating = permanent ban</p><p><strong>7. Liability:</strong> Not liable for losses</p><p class="text-accent font-bold mt-4">By using MeraPasia, you agree to these terms.</p></div><button onclick="document.getElementById('modals').innerHTML=''" class="w-full bg-accent text-primary font-bold py-3 rounded-lg mt-4 hover:opacity-90 transition"><i class="fas fa-check mr-2"></i>Close</button></div></div>`;document.getElementById('modals').innerHTML=m;sounds.click()}
         
         function adminAccess(){const pass=prompt('Admin Password:');if(pass===adminPass){adminMode=true;localStorage.setItem('adminLogged','true');showAdminPanel()}}
         function showAdminPanel(){document.getElementById('authPage').classList.add('hidden');document.getElementById('app').classList.remove('hidden');navigate('admin');updateAdminStats()}
-        function updateAdminStats(){const users=JSON.parse(localStorage.getItem('users')||'[]');document.getElementById('adminTotalUsers').textContent=users.length;const revenue=localStorage.getItem('adminRevenue')||0;document.getElementById('adminRevenue').textContent='Rs'+revenue;document.getElementById('adminDeposits').textContent='0';document.getElementById('adminWithdrawals').textContent='0'}
+        function updateAdminStats(){const users=JSON.parse(localStorage.getItem('users')||'[]');document.getElementById('adminTotalUsers').textContent=users.length;const revenue=localStorage.getItem('adminRevenue')||0;document.getElementById('adminRevenue').textContent='₨'+revenue;document.getElementById('adminDeposits').textContent='0';document.getElementById('adminWithdrawals').textContent='0'}
         function showAdminUsers(){notif('User management coming soon!');sounds.click()}
         function showAdminDeposits(){notif('Deposit requests coming soon!');sounds.click()}
         function showAdminWithdrawals(){notif('Withdrawal requests coming soon!');sounds.click()}
