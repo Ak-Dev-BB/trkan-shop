@@ -21,7 +21,7 @@ body {
     margin: 0 auto;
     padding: 40px 20px;
 }
-.main-nav {
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
