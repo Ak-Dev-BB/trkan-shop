@@ -40,8 +40,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 18px 32px;
-    border-bottom: 1px solid #1f2e41;
-    background: rgba(6, 12, 20, 0.7);
+    border-bottom: 1px solid #1e3148;
+    background: rgba(6, 14, 24, 0.7);
     backdrop-filter: blur(8px);
 }
 
@@ -55,14 +55,14 @@ body {
     height: 36px;
     width: auto;
     display: block;
-    filter: drop-shadow(0 0 6px cyan);
+    filter: drop-shadow(0 0 8px #3d9eff);
 }
 
 .logo-area i.fa-shield-halved {
     font-size: 32px;
-    color: #00ccff;
-    text-shadow: 0 0 10px #00ccff;
-    background: #0f1a24;
+    color: #2a9eff;
+    text-shadow: 0 0 10px #0055cc;
+    background: #101e2c;
     padding: 6px;
     border-radius: 12px;
 }
@@ -71,20 +71,20 @@ body {
     font-weight: 700;
     font-size: 1.5rem;
     letter-spacing: 2px;
-    background: linear-gradient(135deg, #b0f0ff, #4ad0ff);
+    background: linear-gradient(135deg, #c0e6ff, #6eb3ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 8px #00a6ff;
+    text-shadow: 0 0 8px #006eff;
 }
 
 .nav-tabs {
     display: flex;
     gap: 6px;
-    background: #0f1a24;
+    background: #0f1d2e;
     padding: 4px;
     border-radius: 60px;
-    border: 1px solid #253545;
+    border: 1px solid #283e5a;
 }
 
 .nav-tab {
@@ -93,20 +93,29 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     letter-spacing: 0.5px;
-    color: #9aaebf;
+    color: #9bb4d0;
     text-decoration: none;
     transition: all 0.2s;
 }
 
 .nav-tab:hover {
-    background: #1c3142;
-    color: #dfe9f3;
+    background: #1c3350;
+    color: #e2ecff;
 }
 
 .nav-tab.active {
-    background: #005f8c;
+    background: #004e8c;
     color: white;
-    box-shadow: 0 0 12px #0077be, 0 0 4px #00a6ff inset;
+    box-shadow: 0 0 14px #0077be, 0 0 4px #7fd4ff inset;
+}
+
+/* ----- page title (consistent styling) ----- */
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 30px 40px 10px;
+    flex-wrap: wrap;
 }
 
 /* ----- main protection content ----- */
