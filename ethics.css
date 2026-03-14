@@ -119,6 +119,15 @@ body {
     flex-wrap: wrap;
 }
 
+/* ----- page title (consistent styling) ----- */
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 30px 40px 10px;
+    flex-wrap: wrap;
+}
+
 .page-title i {
     font-size: 3rem;
     color: #8abdff;
