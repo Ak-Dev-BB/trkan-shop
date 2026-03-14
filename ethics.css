@@ -1,0 +1,578 @@
+/* style.css – CyberShield main theme (ethics page) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0e17;
+    color: #eef2f8;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(64, 128, 255, 0.03) 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(0, 200, 255, 0.02) 0%, transparent 40%);
+}
+
+.ethics-page {
+    max-width: 1300px;
+    width: 100%;
+    background: rgba(10, 18, 28, 0.82);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid #233655;
+    border-radius: 32px;
+    box-shadow: 0 25px 50px -15px #000000, 0 0 0 1px rgba(0, 180, 255, 0.15) inset;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----- header & navigation (consistent across pages) ----- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    border-bottom: 1px solid #1e3148;
+    background: rgba(6, 14, 24, 0.7);
+    backdrop-filter: blur(8px);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 8px #3d9eff);
+}
+
+.logo-area i.fa-shield-halved {
+    font-size: 32px;
+    color: #2a9eff;
+    text-shadow: 0 0 10px #0055cc;
+    background: #101e2c;
+    padding: 6px;
+    border-radius: 12px;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #c0e6ff, #6eb3ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 8px #006eff;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 6px;
+    background: #0f1d2e;
+    padding: 4px;
+    border-radius: 60px;
+    border: 1px solid #283e5a;
+}
+
+.nav-tab {
+    padding: 10px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    color: #9bb4d0;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.nav-tab:hover {
+    background: #1c3350;
+    color: #e2ecff;
+}
+
+.nav-tab.active {
+    background: #004e8c;
+    color: white;
+    box-shadow: 0 0 14px #0077be, 0 0 4px #7fd4ff inset;
+}
+
+/* ----- page title (consistent styling) ----- */
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 30px 40px 10px;
+    flex-wrap: wrap;
+}
+
+.page-title i {
+    font-size: 3rem;
+    color: #8abdff;
+    filter: drop-shadow(0 0 10px #3f9eff);
+}
+
+.page-title h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #ecf5ff, #adcfff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.live-badge {
+    background: #1d314a;
+    border: 1px solid #3d85c6;
+    border-radius: 60px;
+    padding: 6px 18px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #c2e2ff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 0 12px #005bbb;
+}
+
+.live-badge i {
+    font-size: 0.9rem;
+    color: #ffd966;
+}
+
+/* ----- intro card (ethics statement) ----- */
+.ethics-intro {
+    padding: 10px 40px 25px;
+}
+
+.intro-card {
+    background: #132334;
+    border-left: 6px solid #2a7faa;
+    border-radius: 20px;
+    padding: 28px 36px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.intro-card i {
+    font-size: 3.5rem;
+    color: #5ba9ff;
+    opacity: 0.7;
+}
+
+.intro-card p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #d2e6ff;
+    max-width: 800px;
+}
+
+/* ----- ethics icons section ----- */
+.ethics-icons-section {
+    padding: 20px 40px 20px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cde1ff;
+}
+
+.section-title i {
+    color: #409cff;
+    font-size: 2rem;
+}
+
+.section-subtitle {
+    color: #9ab9dd;
+    margin-bottom: 32px;
+    font-size: 1.1rem;
+    padding-left: 45px;
+}
+
+/* icons grid */
+.ethics-icons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+    margin: 30px 0 20px;
+}
+
+.ethics-icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 130px;
+}
+
+.ethics-icon-card:hover {
+    transform: translateY(-8px);
+}
+
+.ethics-icon-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #112536;
+    border: 2px solid #31699e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 5px 0 #0b1a2b;
+}
+
+.ethics-icon-card:hover .ethics-icon-circle {
+    border-color: #60b0ff;
+    box-shadow: 0 0 0 4px rgba(0, 162, 255, 0.25), 0 5px 0 #0e2238;
+}
+
+.ethics-icon-circle img {
+    max-width: 55px;
+    max-height: 55px;
+    filter: drop-shadow(0 0 5px #77bbff);
+}
+
+.ethics-icon-circle i {
+    font-size: 42px;
+    color: #569eff;
+}
+
+.ethics-icon-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
+    color: #bad3f0;
+    text-align: center;
+    background: #12263b;
+    padding: 5px 12px;
+    border-radius: 40px;
+    border: 1px solid #2b5280;
+}
+
+/* ----- articles container (dynamic) ----- */
+.ethics-articles-container {
+    padding: 20px 40px 30px;
+    min-height: 300px;
+}
+
+.ethics-article {
+    display: none;
+    background: #0f1f30;
+    border-radius: 28px;
+    border: 1px solid #2b4b70;
+    overflow: hidden;
+    box-shadow: 0 15px 30px -12px #000000;
+}
+
+.ethics-article.active-article {
+    display: block;
+}
+
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 28px;
+    background: #0b1b2c;
+    border-bottom: 1px solid #23415c;
+}
+
+.article-header h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #e1f0ff;
+}
+
+.article-header h3 i {
+    color: #6cb1ff;
+    font-size: 1.8rem;
+}
+
+.article-badge {
+    background: #002856;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #b3dcff;
+    border: 1px solid #2f74b0;
+}
+
+.article-content {
+    display: flex;
+    padding: 28px;
+    gap: 30px;
+}
+
+.article-image {
+    flex: 0 0 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d2135;
+    border-radius: 30px;
+    border: 1px solid #325c86;
+}
+
+.article-image i {
+    font-size: 5rem;
+    color: #4688cf;
+}
+
+.article-text {
+    flex: 1;
+}
+
+.article-text p {
+    margin-bottom: 20px;
+    color: #c4dcf5;
+    font-size: 1.05rem;
+}
+
+.article-text ul {
+    list-style: none;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 25px;
+}
+
+.article-text li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #bdd6f0;
+}
+
+.article-text li i {
+    color: #3adb76;
+    font-size: 1.1rem;
+    text-shadow: 0 0 8px #00aa33;
+}
+
+/* ----- resources section (cards) ----- */
+.resources-section {
+    padding: 30px 40px 40px;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.resource-card {
+    background: #112538;
+    border: 1px solid #2b4f78;
+    border-radius: 24px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.resource-card:hover {
+    transform: translateY(-6px);
+    border-color: #548fcb;
+    box-shadow: 0 15px 30px -12px #001e44;
+}
+
+.resource-card i {
+    font-size: 2.8rem;
+    color: #5fa9ff;
+    margin-bottom: 18px;
+}
+
+.resource-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #e0edff;
+}
+
+.resource-card p {
+    color: #a6c1e0;
+    margin-bottom: 22px;
+    font-size: 0.95rem;
+}
+
+.resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #003e70;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid #3f85c4;
+    transition: 0.2s;
+}
+
+.resource-link:hover {
+    background: #0a5a96;
+    gap: 12px;
+    box-shadow: 0 0 15px #0066cc;
+}
+
+/* ----- footer (consistent) ----- */
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    background: #0a1422;
+    border-top: 1px solid #1b3148;
+    font-size: 0.85rem;
+    color: #8da6c2;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-left i {
+    font-size: 1.3rem;
+    color: #2a6b9e;
+}
+
+.footer-right span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #122438;
+    padding: 5px 14px;
+    border-radius: 40px;
+    border: 1px solid #2f5275;
+}
+
+/* ----- responsive design ----- */
+@media (max-width: 950px) {
+    .article-content {
+        flex-direction: column;
+    }
+    
+    .article-image {
+        padding: 20px;
+    }
+    
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 750px) {
+    .main-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+    
+    .nav-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .page-title {
+        padding: 20px 25px;
+    }
+    
+    .page-title h1 {
+        font-size: 1.6rem;
+    }
+    
+    .ethics-icons-grid {
+        gap: 20px;
+    }
+    
+    .ethics-icon-card {
+        width: 100px;
+    }
+    
+    .ethics-icon-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .ethics-icon-circle i {
+        font-size: 34px;
+    }
+    
+    .ethics-icon-circle img {
+        max-width: 45px;
+        max-height: 45px;
+    }
+    
+    .article-text ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-footer {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 500px) {
+    .intro-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .article-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .article-header h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* fallback icon centering */
+.ethics-icon-circle i[style*="display: flex"] {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
