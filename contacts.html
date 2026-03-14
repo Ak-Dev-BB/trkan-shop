@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield · Contact & Feedback</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Master CSS -->
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <div class="contacts-page">
+        <!-- HEADER with left logo and right navigation -->
+        <header class="main-header">
+            <div class="logo-area">
+                <img src="logo.png" alt="CyberShield" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-shield-halved" style="display: none;"></i>
+                <span class="logo-text">CYBERSHIELD</span>
+            </div>
+            <nav class="nav-tabs">
+                <a href="home.html" class="nav-tab">HOME</a>
+                <a href="articles.html" class="nav-tab">ARTICLES</a>
+                <a href="protection.html" class="nav-tab">PROTECTION</a>
+                <a href="ethics.html" class="nav-tab">ETHICS</a>
+                <a href="contacts.html" class="nav-tab active">CONTACTS</a>
+            </nav>
+        </header>
+
+        <!-- PAGE TITLE -->
+        <div class="page-title">
+            <i class="fas fa-envelope"></i>
+            <h1>CONTACT & FEEDBACK</h1>
+            <span class="live-badge"><i class="fas fa-star"></i> RATE US</span>
+        </div>
+
+        <!-- TWO COLUMN LAYOUT: Contact Info + Feedback Form -->
+        <div class="contact-grid">
+            <!-- LEFT COLUMN: Contact Information -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3><i class="fas fa-shield-halved"></i> GET IN TOUCH</h3>
+                    <p>Have questions about cybersecurity? Need assistance with your digital defense? Our team is here to help.</p>
+                    
+                    <div class="info-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-pin"></i>
+                            <div>
+                                <h4>Headquarters</h4>
+                                <p>CyberShield Security Hub<br>123 Digital Avenue, Tech City<br>TC 94105</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>support@cybershield.com<br>security@cybershield.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Emergency Hotline</h4>
+                                <p>+1 (800) 555-0199<br>24/7 Incident Response</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Response Time</h4>
+                                <p>Within 2 hours (business)<br>Immediate for critical threats</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>FOLLOW US</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Feedback Form with Star Rating -->
+            <div class="feedback-form">
+                <div class="form-card">
+                    <h3><i class="fas fa-star"></i> RATE YOUR EXPERIENCE</h3>
+                    <p>Your feedback helps us improve our security awareness content.</p>
+                    
+                    <!-- Star Rating System -->
+                    <div class="rating-section">
+                        <label>How would you rate us?</label>
+                        <div class="star-rating">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <span class="rating-text" id="ratingText">Click to rate</span>
+                    </div>
+
+                    <!-- Feedback Form -->
+                    <form id="feedbackForm">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                            <select id="subject">
+                                <option value="general">General Inquiry</option>
+                                <option value="feedback">Website Feedback</option>
+                                <option value="security">Security Concern</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment"></i> Your Message</label>
+                            <textarea id="message" rows="5" placeholder="Tell us what you think..." required></textarea>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="newsletter">
+                            <label for="newsletter">Subscribe to security alerts and updates</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> SEND FEEDBACK
+                        </button>
+                    </form>
+
+                    <div class="secure-note">
+                        <i class="fas fa-lock"></i>
+                        <span>All submissions are encrypted and secure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAP / LOCATION SECTION -->
+        <div class="map-section">
+            <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> OUR LOCATION</h2>
+            <div class="map-placeholder">
+                <i class="fas fa-map"></i>
+                <span>INTERACTIVE MAP WOULD BE HERE</span>
+                <p>123 Digital Avenue, Tech City (Cyber Defense Headquarters)</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+            <div class="footer-left">
+                <i class="fas fa-shield"></i>
+                <span>© 2026 CyberShield Awareness Project</span>
+            </div>
+            <div class="footer-right">
+                <span><i class="far fa-clock"></i> 2:53 PM (ENG)</span>
+                <span><i class="fas fa-search"></i> Search</span>
+                <span><i class="fas fa-folder-open"></i> contacts.html</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Star Rating and Form -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Star Rating Functionality
+            const stars = document.querySelectorAll('.star-rating i');
+            const ratingText = document.getElementById('ratingText');
+            let currentRating = 0;
+
+            stars.forEach(star => {
+                // Hover effect
+                star.addEventListener('mouseenter', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    highlightStars(rating);
+                });
+
+                star.addEventListener('mouseleave', function() {
+                    highlightStars(currentRating);
+                });
+
+                // Click to set rating
+                star.addEventListener('click', function() {
+                    currentRating = parseInt(this.getAttribute('data-rating'));
+                    highlightStars(currentRating);
+                    
+                    // Update rating text
+                    const messages = [
+                        'Click to rate',
+                        'Poor - We need to improve',
+                        'Fair - Getting there',
+                        'Good - Glad you liked it',
+                        'Very Good - Thanks!',
+                        'Excellent - You made our day!'
+                    ];
+                    ratingText.textContent = messages[currentRating];
+                    
+                    // Change stars to solid
+                    stars.forEach((s, index) => {
+                        if (index < currentRating) {
+                            s.classList.remove('far');
+                            s.classList.add('fas');
+                        } else {
+                            s.classList.remove('fas');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+            });
+
+            function highlightStars(rating) {
+                stars.forEach((star, index) => {
+                    if (index < rating) {
+                        star.style.color = '#ffbb33';
+                    } else {
+                        star.style.color = '#6d8eb0';
+                    }
+                });
+            }
+
+            // Form Submission (prevent default for demo)
+            const form = document.getElementById('feedbackForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your feedback! (Demo - form not actually submitted)');
+                form.reset();
+                
+                // Reset stars
+                currentRating = 0;
+                stars.forEach(star => {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                    star.style.color = '#6d8eb0';
+                });
+                ratingText.textContent = 'Click to rate';
+            });
+        });
+    </script>
+</body>
+</html>

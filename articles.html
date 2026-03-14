@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield · threat icons</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS file -->
+    <link rel="stylesheet" href="css/articles.css">
+</head>
+<body>
+    <div class="icon-page">
+        <!-- HEADER with left logo and right navigation tabs -->
+        <div class="page-header">
+            <div class="logo-area">
+                <!-- your website logo image -->
+                <img src="logo.png" alt="CyberShield" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-shield-halved" style="display: none; font-size: 2rem; color: #3f9eff;"></i>
+                <span class="logo-text">CYBERSHIELD</span>
+            </div>
+            
+            <!-- right side navigation tabs -->
+            <div class="nav-tabs">
+                <a href="index.html" class="nav-tab">HOME</a>
+                <a href="articles.html" class="nav-tab active">ARTICLES</a>
+                <a href="protection.html" class="nav-tab">PROTECTION</a>
+                <a href="ethics.html" class="nav-tab">ETHICS</a>
+                <a href="contacts.html" class="nav-tab">CONTACTS</a>
+            </div>
+        </div>
+
+        <!-- threat title and warning badge -->
+        <div class="title-section">
+            <div class="title-left">
+                <i class="fas fa-triangle-exclamation"></i>
+                <h1>THREAT ARTICLES / ICONS</h1>
+            </div>
+            <div class="warning-badge">
+                <i class="fas fa-skull"></i> WARNING
+            </div>
+        </div>
+
+        <!-- ATTACK ROW - 4 items -->
+        <div class="attack-row">
+            <div class="attack-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>ATTACK</strong></span>
+            </div>
+            <div class="attack-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>ATTACK</strong></span>
+            </div>
+            <div class="attack-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>ATTACK</strong></span>
+            </div>
+            <div class="attack-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>ATTACK</strong></span>
+            </div>
+        </div>
+
+        <!-- icons grid - CLICKABLE articles that redirect -->
+        <div class="icons-grid">
+            <!-- icon 1 - phishing - redirects to phishing.html -->
+            <a href="phishing.html" class="icon-card">
+                <div class="icon-circle">
+                    <img src="f-s.png" alt="phishing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-fish" style="display: none;"></i>
+                </div>
+                <span class="icon-label">PHISHING</span>
+            </a>
+
+            <!-- icon 2 - ransomware - redirects to ransomware.html -->
+            <a href="ransomware.html" class="icon-card">
+                <div class="icon-circle">
+                    <img src="r-s.png" alt="ransomware" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-virus" style="display: none;"></i>
+                </div>
+                <span class="icon-label">RANSOMWARE</span>
+            </a>
+
+            <!-- icon 3 - DDoS - redirects to ddos.html -->
+            <a href="ddos.html" class="icon-card">
+                <div class="icon-circle">
+                    <img src="DDos.png" alt="DDoS" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-water" style="display: none;"></i>
+                </div>
+                <span class="icon-label">DDOS FLOOD</span>
+            </a>
+
+            <!-- icon 4 - AI threat - redirects to ai-threat.html -->
+            <a href="ai-threat.html" class="icon-card">
+                <div class="icon-circle">
+                    <img src="AI.png" alt="evasion" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-brain" style="display: none;"></i>
+                </div>
+                <span class="icon-label">AI EVASION</span>
+            </a>
+        </div>
+
+        <!-- search bar -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <span>SEARCH THREAT DATABASE</span>
+            <i class="fas fa-bolt"></i>
+        </div>
+
+        <!-- footer -->
+        <div class="mini-footer">
+            <i class="fas fa-shield"></i>
+            <span>CyberShield Active · 4 Threats Detected</span>
+            <i class="fas fa-circle" style="color: #ff3333; font-size: 0.6rem;"></i>
+        </div>
+    </div>
+
+    <script>
+        // Fallback for images - shows icon if image fails to load
+        document.querySelectorAll('.icon-circle img, .logo-img').forEach(img => {
+            img.onerror = function() {
+                this.style.display = 'none';
+                if (this.nextElementSibling) {
+                    this.nextElementSibling.style.display = 'flex';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

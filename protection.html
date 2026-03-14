@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield · protection</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- external CSS -->
+    <link rel="stylesheet" href="css/protection.css">
+</head>
+<body>
+    <div class="protection-page">
+        <!-- header with left logo and right navigation (same as articles) -->
+        <header class="main-header">
+            <div class="logo-area">
+                <!-- your website logo from assets - replace src -->
+                <img src="logo.png" alt="CyberShield" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-shield-halved" style="display: none;"></i>
+                <span class="logo-text">CYBERSHIELD</span>
+            </div>
+            <nav class="nav-tabs">
+                <a href="index.html" class="nav-tab">HOME</a>
+                <a href="articles.html" class="nav-tab">ARTICLES</a>
+                <a href="protection.html" class="nav-tab active">PROTECTION</a>
+                <a href="ethics.html" class="nav-tab">ETHICS</a>
+                <a href="contacts.html" class="nav-tab">CONTACTS</a>
+            </nav>
+        </header>
+
+        <!-- main protection content -->
+        <div class="protection-content">
+            <!-- title with shield icon -->
+            <div class="page-title">
+                <i class="fas fa-shield-halved"></i>
+                <h1>PROTECTION LAYERS</h1>
+                <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+            </div>
+
+            <!-- two feature cards: 2FA and Firewall -->
+            <div class="protection-grid">
+                
+                <!-- CARD 1: 2FA (two-factor authentication) -->
+                <div class="protection-card">
+                    <div class="card-header">
+                        <span class="card-badge"><i class="fas fa-lock"></i> TIER 1</span>
+                        <span class="card-tag">RECOMMENDED</span>
+                    </div>
+                    <!-- icon area (your asset) - clickable -->
+                    <a href="2fa-article.html" class="icon-link">
+                        <div class="icon-circle">
+                            <!-- replace with your 2FA icon from assets -->
+                            <img src="2FA.png" alt="2FA" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-mobile-alt" style="display: none;"></i>
+                        </div>
+                    </a>
+                    <h2>Two-Factor Authentication</h2>
+                    <div class="feature-list">
+                        <span><i class="fas fa-check-circle"></i> Biometric support</span>
+                        <span><i class="fas fa-check-circle"></i> One-time passwords</span>
+                        <span><i class="fas fa-check-circle"></i> Hardware tokens</span>
+                    </div>
+                    <p class="card-description">
+                        Add an extra layer of security beyond passwords. 2FA reduces account compromise by 99.9%.
+                    </p>
+                    <div class="card-footer">
+                        <a href="2fa-article.html" class="action-button">
+                            <span>READ ARTICLE</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="status status-active">ACTIVE</span>
+                    </div>
+                </div>
+
+                <!-- CARD 2: FIREWALL SETUP -->
+                <div class="protection-card">
+                    <div class="card-header">
+                        <span class="card-badge"><i class="fas fa-shield"></i> TIER 2</span>
+                        <span class="card-tag">ESSENTIAL</span>
+                    </div>
+                    <!-- icon area (your asset) - clickable -->
+                    <a href="firewall-article.html" class="icon-link">
+                        <div class="icon-circle">
+                            <!-- replace with your firewall icon from assets -->
+                            <img src="fire.png" alt="firewall" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-wall" style="display: none;"></i>
+                        </div>
+                    </a>
+                    <h2>Firewall Setup & Hardening</h2>
+                    <div class="feature-list">
+                        <span><i class="fas fa-check-circle"></i> Deep packet inspection</span>
+                        <span><i class="fas fa-check-circle"></i> Intrusion prevention</span>
+                        <span><i class="fas fa-check-circle"></i> Zero-trust rules</span>
+                    </div>
+                    <p class="card-description">
+                        Enterprise‑grade firewall configuration that blocks 99.9% of unauthorized access attempts.
+                    </p>
+                    <div class="card-footer">
+                        <a href="firewall-article.html" class="action-button">
+                            <span>READ ARTICLE</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <span class="status status-protected">PROTECTED</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- additional info strip (like live stats) -->
+            <div class="info-strip">
+                <div class="info-item">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>2FA active on 84% of accounts</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-fire"></i>
+                    <span>firewalls blocking 2.5M attacks/day</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>threat level: guarded</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer (same style) -->
+        <footer class="protection-footer">
+            <div class="footer-left">
+                <i class="fas fa-shield"></i>
+                <span>© 2026 CyberShield Awareness Project</span>
+            </div>
+            <div class="footer-right">
+                <span><i class="far fa-clock"></i> 2:53 PM (ENG)</span>
+                <span><i class="fas fa-search"></i> Search</span>
+                <span><i class="fas fa-folder-open"></i> protection.html</span>
+            </div>
+        </footer>
+
+        <!-- local file hint (optional) -->
+        <div class="file-hint">
+            <i class="fas fa-link"></i> file:///C:/Users/ascng/Desktop/Project-web/protection.html
+        </div>
+    </div>
+
+    <script>
+        // fallback for images: if asset missing, show font icon
+        document.querySelectorAll('.icon-circle img, .logo-img').forEach(img => {
+            img.onerror = function() {
+                this.style.display = 'none';
+                if (this.nextElementSibling) {
+                    this.nextElementSibling.style.display = 'flex';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

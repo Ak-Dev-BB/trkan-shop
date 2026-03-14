@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield · Ethics & Cyber Law</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Master CSS -->
+    <link rel="stylesheet" href="css/ethics.css">
+</head>
+<body>
+    <div class="ethics-page">
+        <!-- HEADER with left logo and right navigation -->
+        <header class="main-header">
+            <div class="logo-area">
+                <img src="logo.png" alt="CyberShield" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-shield-halved" style="display: none;"></i>
+                <span class="logo-text">CYBERSHIELD</span>
+            </div>
+            <nav class="nav-tabs">
+                <a href="home.html" class="nav-tab">HOME</a>
+                <a href="articles.html" class="nav-tab">ARTICLES</a>
+                <a href="protection.html" class="nav-tab">PROTECTION</a>
+                <a href="ethics.html" class="nav-tab active">ETHICS</a>
+                <a href="contacts.html" class="nav-tab">CONTACTS</a>
+            </nav>
+        </header>
+
+        <!-- PAGE TITLE with ethics icon -->
+        <div class="page-title">
+            <i class="fas fa-scale-balanced"></i>
+            <h1>CYBER ETHICS & LAW</h1>
+            <span class="live-badge"><i class="fas fa-gavel"></i> DIGITAL RIGHTS</span>
+        </div>
+
+        <!-- ETHICS INTRODUCTION -->
+        <div class="ethics-intro">
+            <div class="intro-card">
+                <i class="fas fa-quote-right"></i>
+                <p>Safe internet usage begins with understanding your digital rights and responsibilities. Explore our ethical guidelines and legal resources to navigate the cyber world securely.</p>
+            </div>
+        </div>
+
+        <!-- ARTICLE ICONS SECTION - Clickable icons that reveal articles below -->
+        <div class="ethics-icons-section">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> ETHICS & SAFETY ARTICLES</h2>
+            <p class="section-subtitle">Click any icon to read about secure and ethical internet practices</p>
+
+            <!-- ICONS ROW (4 clickable icons) -->
+            <div class="ethics-icons-grid">
+                <!-- Icon 1: Privacy -->
+                <div class="ethics-icon-card" data-article="privacy">
+                    <div class="ethics-icon-circle">
+                        <img src="assets/privacy-icon.png" alt="Privacy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-user-shield" style="display: none;"></i>
+                    </div>
+                    <span class="ethics-icon-label">PRIVACY</span>
+                </div>
+
+                <!-- Icon 2: Cyber Law -->
+                <div class="ethics-icon-card" data-article="cyberlaw">
+                    <div class="ethics-icon-circle">
+                        <img src="assets/cyberlaw-icon.png" alt="Cyber Law" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-gavel" style="display: none;"></i>
+                    </div>
+                    <span class="ethics-icon-label">CYBER LAW</span>
+                </div>
+
+                <!-- Icon 3: Safe Browsing -->
+                <div class="ethics-icon-card" data-article="safebrowsing">
+                    <div class="ethics-icon-circle">
+                        <img src="assets/safe-icon.png" alt="Safe Browsing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-globe" style="display: none;"></i>
+                    </div>
+                    <span class="ethics-icon-label">SAFE BROWSING</span>
+                </div>
+
+                <!-- Icon 4: Digital Ethics -->
+                <div class="ethics-icon-card" data-article="digitalethics">
+                    <div class="ethics-icon-circle">
+                        <img src="assets/ethics-icon.png" alt="Digital Ethics" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fas fa-hand-peace" style="display: none;"></i>
+                    </div>
+                    <span class="ethics-icon-label">DIGITAL ETHICS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTICLES DISPLAY SECTION - Content appears below when icons are clicked -->
+        <div class="ethics-articles-container" id="ethicsArticles">
+            <!-- Privacy Article (visible by default) -->
+            <div class="ethics-article active-article" id="article-privacy">
+                <div class="article-header">
+                    <h3><i class="fas fa-user-shield"></i> Digital Privacy: Your Right to Be Invisible</h3>
+                    <span class="article-badge">ESSENTIAL</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-image">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="article-text">
+                        <p>In an era of constant data collection, protecting your digital privacy is both a right and a responsibility. This guide covers:</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Understanding data collection practices</li>
+                            <li><i class="fas fa-check-circle"></i> Privacy laws (GDPR, CCPA, and your rights)</li>
+                            <li><i class="fas fa-check-circle"></i> Tools to protect your online identity</li>
+                            <li><i class="fas fa-check-circle"></i> Secure communication methods</li>
+                        </ul>
+                        <p>Remember: Privacy isn't about hiding—it's about having control over your own information.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cyber Law Article (hidden by default) -->
+            <div class="ethics-article" id="article-cyberlaw">
+                <div class="article-header">
+                    <h3><i class="fas fa-gavel"></i> Understanding Cyber Law: Legal Frameworks</h3>
+                    <span class="article-badge">LEGAL</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-image">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <div class="article-text">
+                        <p>Cyber law governs the digital space. Key areas every user should understand:</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Computer Fraud and Abuse Act</li>
+                            <li><i class="fas fa-check-circle"></i> Intellectual property in the digital age</li>
+                            <li><i class="fas fa-check-circle"></i> Cybercrime penalties and reporting</li>
+                            <li><i class="fas fa-check-circle"></i> International cyber law variations</li>
+                        </ul>
+                        <p>Ignorance of cyber law is not a defense. Stay informed to stay compliant.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safe Browsing Article (hidden by default) -->
+            <div class="ethics-article" id="article-safebrowsing">
+                <div class="article-header">
+                    <h3><i class="fas fa-globe"></i> Safe Browsing: Navigate Without Fear</h3>
+                    <span class="article-badge">PRACTICAL</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-image">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="article-text">
+                        <p>Every click leaves a trace. Learn to browse safely:</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Recognizing secure websites (HTTPS)</li>
+                            <li><i class="fas fa-check-circle"></i> Avoiding phishing traps</li>
+                            <li><i class="fas fa-check-circle"></i> Browser privacy settings</li>
+                            <li><i class="fas fa-check-circle"></i> Using VPNs and private modes</li>
+                        </ul>
+                        <p>Safe browsing habits are your first line of defense.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Digital Ethics Article (hidden by default) -->
+            <div class="ethics-article" id="article-digitalethics">
+                <div class="article-header">
+                    <h3><i class="fas fa-hand-peace"></i> Digital Ethics: The Human Side of Tech</h3>
+                    <span class="article-badge">PHILOSOPHY</span>
+                </div>
+                <div class="article-content">
+                    <div class="article-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="article-text">
+                        <p>Technology should serve humanity, not harm it. Core ethical principles:</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Respecting others' digital boundaries</li>
+                            <li><i class="fas fa-check-circle"></i> Combating online harassment</li>
+                            <li><i class="fas fa-check-circle"></i> Ethical AI and automation</li>
+                            <li><i class="fas fa-check-circle"></i> Digital inclusion and accessibility</li>
+                        </ul>
+                        <p>Ethics in tech isn't optional—it's essential for a better digital future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADDITIONAL RESOURCES SECTION -->
+        <div class="resources-section">
+            <h2 class="section-title"><i class="fas fa-link"></i> ADDITIONAL RESOURCES</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book"></i>
+                    <h4>Cyber Law Handbook</h4>
+                    <p>Free PDF guide to international cyber laws</p>
+                    <a href="#" class="resource-link">DOWNLOAD <i class="fas fa-download"></i></a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h4>Ethics Webinars</h4>
+                    <p>Monthly sessions on digital responsibility</p>
+                    <a href="#" class="resource-link">REGISTER <i class="fas fa-calendar"></i></a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-scale-balanced"></i>
+                    <h4>Legal Aid Directory</h4>
+                    <p>Find cyber law assistance near you</p>
+                    <a href="#" class="resource-link">SEARCH <i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+            <div class="footer-left">
+                <i class="fas fa-shield"></i>
+                <span>© 2026 CyberShield Awareness Project</span>
+            </div>
+            <div class="footer-right">
+                <span><i class="far fa-clock"></i> 2:53 PM (ENG)</span>
+                <span><i class="fas fa-search"></i> Search</span>
+                <span><i class="fas fa-folder-open"></i> ethics.html</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for interactive articles -->
+    <script>
+        // Article switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const iconCards = document.querySelectorAll('.ethics-icon-card');
+            const articles = document.querySelectorAll('.ethics-article');
+
+            // Hide all articles except first one
+            function showArticle(articleId) {
+                articles.forEach(article => {
+                    article.classList.remove('active-article');
+                });
+                const targetArticle = document.getElementById(`article-${articleId}`);
+                if (targetArticle) {
+                    targetArticle.classList.add('active-article');
+                }
+            }
+
+            // Add click event to each icon
+            iconCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const articleKey = this.getAttribute('data-article');
+                    showArticle(articleKey);
+                    
+                    // Optional: scroll to articles section smoothly
+                    document.querySelector('.ethics-articles-container').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
